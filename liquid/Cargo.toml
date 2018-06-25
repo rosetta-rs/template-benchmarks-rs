@@ -1,0 +1,13 @@
+[package]
+name = "liquid-bench"
+version = "0.1.0"
+authors = ["Dirkjan Ochtman <dirkjan@ochtman.nl>"]
+workspace = ".."
+
+[dependencies]
+liquid = { git = "https://github.com/cobalt-org/liquid-rust" }
+serde_yaml = "0.7"
+
+[lib]
+name = "liquid_bench"
+path = "liquid.rs"
