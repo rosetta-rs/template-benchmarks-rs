@@ -1,2 +1,2 @@
 [workspace]
-members = ["askama", "handlebars", "liquid", "tera"]
+members = ["askama", "handlebars", "horrorshow", "liquid", "tera"]

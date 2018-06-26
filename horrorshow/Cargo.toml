@@ -1,0 +1,12 @@
+[package]
+name = "horrorshow-bench"
+version = "0.1.0"
+authors = ["Laurențiu Nicola <lnicola@dend.ro>"]
+workspace = ".."
+
+[dependencies]
+horrorshow = "0.6"
+
+[lib]
+name = "horrorshow_bench"
+path = "horrorshow.rs"
