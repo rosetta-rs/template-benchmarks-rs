@@ -1,13 +1,13 @@
 extern crate handlebars;
 extern crate serde_json;
 
+use criterion;
+
 use self::handlebars::{Handlebars, to_json};
 
 use self::serde_json::value::Value as Json;
 
 use std::collections::BTreeMap;
-
-use test;
 
 static TEAMS_TEMPLATE: &'static str = "<html>
   <head>
@@ -50,8 +50,7 @@ fn teams_data() -> BTreeMap<String, Json> {
     data
 }
 
-#[bench]
-fn teams(b: &mut test::Bencher) {
+pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     let mut handlebars = Handlebars::new();
     handlebars
         .register_template_string("table", TEAMS_TEMPLATE)
@@ -80,7 +79,7 @@ static SOURCE: &'static str = "<html>
 </html>";
 
 #[bench]
-fn big_table(b: &mut test::Bencher) {
+fn big_table(b: &mut criterion::Bencher) {
     let size = 500;
     let mut table = Vec::with_capacity(size);
     for _ in 0..size {

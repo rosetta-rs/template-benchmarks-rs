@@ -1,9 +1,9 @@
 extern crate tera;
 extern crate serde;
 
-use self::tera::{Context, Tera};
+use criterion;
 
-use test;
+use self::tera::{Context, Tera};
 
 // Tera doesn't allow `escape` on number values
 static BIG_TABLE_TEMPLATE: &'static str = "<table>
@@ -12,13 +12,11 @@ static BIG_TABLE_TEMPLATE: &'static str = "<table>
 {% endfor %}
 </table>";
 
-#[bench]
-fn big_table(b: &mut test::Bencher) {
-    let size = 500;
-    let mut table = Vec::with_capacity(size);
-    for _ in 0..size {
-        let mut inner = Vec::with_capacity(size);
-        for i in 0..size {
+pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+    let mut table = Vec::with_capacity(*size);
+    for _ in 0..*size {
+        let mut inner = Vec::with_capacity(*size);
+        for i in 0..*size {
             inner.push(i);
         }
         table.push(inner);
@@ -55,8 +53,7 @@ static TEAMS_TEMPLATE: &'static str = "<html>
   </body>
 </html>";
 
-#[bench]
-fn teams(b: &mut test::Bencher) {
+pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     let mut tera = Tera::default();
     tera.add_raw_templates(vec![("teams.html", TEAMS_TEMPLATE)]).unwrap();
     let mut ctx = Context::new();

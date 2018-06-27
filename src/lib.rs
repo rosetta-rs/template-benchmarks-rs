@@ -1,11 +1,10 @@
-#![feature(test)]
 #[macro_use]
 extern crate askama;
+extern crate criterion;
 #[macro_use]
 extern crate serde_derive;
-extern crate test;
 
-mod askama_bench;
-mod handlebars;
-mod liquid;
-mod tera;
+pub mod askama_bench;
+pub mod handlebars;
+pub mod liquid;
+pub mod tera;

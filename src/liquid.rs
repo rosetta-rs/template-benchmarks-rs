@@ -1,17 +1,15 @@
 extern crate liquid;
 extern crate serde_yaml;
 
+use criterion;
+
 use self::liquid::{Object, ParserBuilder, Value};
 
-use test;
-
-#[bench]
-fn big_table(b: &mut test::Bencher) {
-    let size = 500;
-    let mut table = Vec::with_capacity(size);
-    for _ in 0..size {
-        let mut inner = Vec::with_capacity(size);
-        for i in 0..size {
+pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+    let mut table = Vec::with_capacity(*size);
+    for _ in 0..*size {
+        let mut inner = Vec::with_capacity(*size);
+        for i in 0..*size {
             inner.push(Value::Scalar((i as i32).into()));
         }
         table.push(Value::Array(inner));
@@ -60,8 +58,7 @@ teams:
     score: 12
 ";
 
-#[bench]
-fn teams(b: &mut test::Bencher) {
+pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     let parser = ParserBuilder::with_liquid().extra_filters().build();
     let template = parser
         .parse(TEAMS_TEMPLATE)
