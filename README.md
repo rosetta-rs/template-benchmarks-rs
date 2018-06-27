@@ -20,6 +20,7 @@ Current results:
 
 ```
 Big table/Askama        time:   [0.3615 ms 0.3633 ms 0.3654 ms]                             
+Big table/Handlebars    time:   [7.2553 ms 7.2673 ms 7.2812 ms]
 Big table/Horrorshow    time:   [0.1130 ms 0.1135 ms 0.1140 ms]                                 
 Big table/Liquid        time:   [5.6857 ms 5.6959 ms 5.7071 ms]                              
 Big table/Tera          time:   [1.1846 ms 1.1879 ms 1.1919 ms]                            

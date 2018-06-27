@@ -8,6 +8,7 @@ use criterion::{Criterion, Fun};
 fn big_table(c: &mut Criterion) {
     c.bench_functions("Big table", vec![
         Fun::new("Askama", |b, i| askama_bench::big_table(b, i)),
+        Fun::new("Handlebars", |b, i| handlebars::big_table(b, i)),
         Fun::new("Horrorshow", |b, i| horrorshow_bench::big_table(b, i)),
         Fun::new("Liquid", |b, i| liquid::big_table(b, i)),
         Fun::new("Tera", |b, i| tera::big_table(b, i)),
