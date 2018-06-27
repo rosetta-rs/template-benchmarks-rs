@@ -19,12 +19,14 @@ download ratings from [crates.io][crates], these four projects are assessed:
 Current results:
 
 ```
-Big table/Askama        time:   [0.3985 ms 0.3999 ms 0.4014 ms]
-Big table/Liquid        time:   [5.8400 ms 5.8505 ms 5.8623 ms]
-Big table/Tera          time:   [1.1939 ms 1.1995 ms 1.2053 ms]
+Big table/Askama        time:   [0.3615 ms 0.3633 ms 0.3654 ms]                             
+Big table/Horrorshow    time:   [0.1130 ms 0.1135 ms 0.1140 ms]                                 
+Big table/Liquid        time:   [5.6857 ms 5.6959 ms 5.7071 ms]                              
+Big table/Tera          time:   [1.1846 ms 1.1879 ms 1.1919 ms]                            
 
-Teams/Askama            time:   [ 2.277 us  2.282 us  2.288 us]
-Teams/Handlebars        time:   [27.889 us 27.992 us 28.105 us]
-Teams/Liquid            time:   [17.601 us 17.678 us 17.756 us]
-Teams/Tera              time:   [13.849 us 13.977 us 14.108 us]
+Teams/Askama            time:   [ 2.126 us  2.131 us  2.137 us]                          
+Teams/Handlebars        time:   [27.815 us 27.884 us 27.971 us]                              
+Teams/Horrorshow        time:   [ 0.541 us  0.542 us  0.543 us]                              
+Teams/Liquid            time:   [17.445 us 17.551 us 17.675 us]                          
+Teams/Tera              time:   [13.104 us 13.161 us 13.226 us]                        
 ```
