@@ -1,9 +1,6 @@
-#![feature(test)]
-#[macro_use]
-extern crate askama;
-extern crate test;
-
 use askama::Template;
+
+use test;
 
 #[derive(Template)]
 #[template(path = "big-table.html")]

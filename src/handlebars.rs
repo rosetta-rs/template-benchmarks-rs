@@ -1,13 +1,13 @@
-#![feature(test)]
 extern crate handlebars;
 extern crate serde_json;
-extern crate test;
 
-use handlebars::{Handlebars, to_json};
+use self::handlebars::{Handlebars, to_json};
 
-use serde_json::value::Value as Json;
+use self::serde_json::value::Value as Json;
 
 use std::collections::BTreeMap;
+
+use test;
 
 static TEAMS_TEMPLATE: &'static str = "<html>
   <head>

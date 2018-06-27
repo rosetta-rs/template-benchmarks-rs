@@ -1,2 +1,15 @@
-[workspace]
-members = ["askama", "handlebars", "liquid", "tera"]
+[package]
+name = "template-benchmarks-rs"
+version = "0.1.0"
+authors = ["Dirkjan Ochtman <dirkjan@ochtman.nl>"]
+
+[dependencies]
+askama = { git = "https://github.com/djc/askama" }
+handlebars = { git = "https://github.com/sunng87/handlebars-rust" }
+liquid = { git = "https://github.com/cobalt-org/liquid-rust" }
+serde = "1"
+serde_derive = "1"
+serde_json = "1"
+serde_yaml = "0.7"
+tera = { git = "https://github.com/Keats/tera" }
+

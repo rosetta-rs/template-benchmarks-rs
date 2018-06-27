@@ -1,9 +1,9 @@
-#![feature(test)]
 extern crate liquid;
 extern crate serde_yaml;
-extern crate test;
 
-use liquid::{Object, ParserBuilder, Value};
+use self::liquid::{Object, ParserBuilder, Value};
+
+use test;
 
 #[bench]
 fn big_table(b: &mut test::Bencher) {
@@ -68,7 +68,7 @@ fn teams(b: &mut test::Bencher) {
         .unwrap();
 
     let data: liquid::Object =
-        serde_yaml::from_str(TEAMS_DATA).unwrap();
+        self::serde_yaml::from_str(TEAMS_DATA).unwrap();
 
     b.iter(|| template.render(&data));
 }

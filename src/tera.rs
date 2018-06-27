@@ -1,11 +1,9 @@
-#![feature(test)]
 extern crate tera;
-extern crate test;
 extern crate serde;
-#[macro_use]
-extern crate serde_derive;
 
-use tera::{Context, Tera};
+use self::tera::{Context, Tera};
+
+use test;
 
 // Tera doesn't allow `escape` on number values
 static BIG_TABLE_TEMPLATE: &'static str = "<table>
