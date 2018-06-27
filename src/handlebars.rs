@@ -9,21 +9,43 @@ use self::serde_json::value::Value as Json;
 
 use std::collections::BTreeMap;
 
-static TEAMS_TEMPLATE: &'static str = "<html>
-  <head>
-    <title>{{year}}</title>
-  </head>
-  <body>
-    <h1>CSL {{year}}</h1>
-    <ul>
-    {{#each teams}}
-      <li class=\"{{#if @first}}champion{{/if}}\">
-      <b>{{name}}</b>: {{score}}
-      </li>
+pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+    let mut table = Vec::with_capacity(*size);
+    for _ in 0..*size {
+        let mut inner = Vec::with_capacity(*size);
+        for i in 0..*size {
+            inner.push(i);
+        }
+        table.push(inner);
+    }
+
+    let ctx = BigTable { table };
+    let mut handlebars = Handlebars::new();
+    handlebars.register_template_string("big-table.html", SOURCE).unwrap();
+    b.iter(|| handlebars.render("big-table.html", &ctx).ok().unwrap());
+}
+
+#[derive(Serialize)]
+struct BigTable {
+    table: Vec<Vec<usize>>,
+}
+
+static SOURCE: &'static str = "<html>
+    {{#each table as |n|}}
+        <tr>{{#each n as |v|}}<td>{{v}}</td>{{/each}}</tr>
     {{/each}}
-    </ul>
-  </body>
 </html>";
+
+pub fn teams(b: &mut criterion::Bencher, _: &usize) {
+    let mut handlebars = Handlebars::new();
+    handlebars
+        .register_template_string("table", TEAMS_TEMPLATE)
+        .ok()
+        .expect("Invalid template format");
+
+    let data = teams_data();
+    b.iter(|| handlebars.render("table", &data).ok().unwrap())
+}
 
 fn teams_data() -> BTreeMap<String, Json> {
     let mut data = BTreeMap::new();
@@ -50,40 +72,18 @@ fn teams_data() -> BTreeMap<String, Json> {
     data
 }
 
-pub fn teams(b: &mut criterion::Bencher, _: &usize) {
-    let mut handlebars = Handlebars::new();
-    handlebars
-        .register_template_string("table", TEAMS_TEMPLATE)
-        .ok()
-        .expect("Invalid template format");
-
-    let data = teams_data();
-    b.iter(|| handlebars.render("table", &data).ok().unwrap())
-}
-
-static SOURCE: &'static str = "<html>
-    {{#each table as |n|}}
-        <tr>{{#each n as |v|}}<td>{{v}}</td>{{/each}}</tr>
+static TEAMS_TEMPLATE: &'static str = "<html>
+  <head>
+    <title>{{year}}</title>
+  </head>
+  <body>
+    <h1>CSL {{year}}</h1>
+    <ul>
+    {{#each teams}}
+      <li class=\"{{#if @first}}champion{{/if}}\">
+      <b>{{name}}</b>: {{score}}
+      </li>
     {{/each}}
+    </ul>
+  </body>
 </html>";
-
-#[derive(Serialize)]
-struct BigTable {
-    table: Vec<Vec<usize>>,
-}
-
-pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
-    let mut table = Vec::with_capacity(*size);
-    for _ in 0..*size {
-        let mut inner = Vec::with_capacity(*size);
-        for i in 0..*size {
-            inner.push(i);
-        }
-        table.push(inner);
-    }
-
-    let ctx = BigTable { table };
-    let mut handlebars = Handlebars::new();
-    handlebars.register_template_string("big-table.html", SOURCE).unwrap();
-    b.iter(|| handlebars.render("big-table.html", &ctx).ok().unwrap());
-}

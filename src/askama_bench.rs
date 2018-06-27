@@ -2,12 +2,6 @@ use askama::Template;
 
 use criterion;
 
-#[derive(Template)]
-#[template(path = "big-table.html")]
-struct BigTable {
-    table: Vec<Vec<usize>>,
-}
-
 pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
     let mut table = Vec::with_capacity(*size);
     for _ in 0..*size {
@@ -22,15 +16,9 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
 }
 
 #[derive(Template)]
-#[template(path = "teams.html")]
-struct Teams {
-    year: u16,
-    teams: Vec<Team>,
-}
-
-struct Team {
-    name: String,
-    score: u8,
+#[template(path = "big-table.html")]
+struct BigTable {
+    table: Vec<Vec<usize>>,
 }
 
 pub fn teams(b: &mut criterion::Bencher, _: &usize) {
@@ -44,4 +32,16 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
         ],
     };
     b.iter(|| teams.render().unwrap());
+}
+
+#[derive(Template)]
+#[template(path = "teams.html")]
+struct Teams {
+    year: u16,
+    teams: Vec<Team>,
+}
+
+struct Team {
+    name: String,
+    score: u8,
 }

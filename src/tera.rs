@@ -5,13 +5,6 @@ use criterion;
 
 use self::tera::{Context, Tera};
 
-// Tera doesn't allow `escape` on number values
-static BIG_TABLE_TEMPLATE: &'static str = "<table>
-{% for row in table %}
-<tr>{% for col in row %}<td>{{ col }}</td>{% endfor %}</tr>
-{% endfor %}
-</table>";
-
 pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
     let mut table = Vec::with_capacity(*size);
     for _ in 0..*size {
@@ -37,21 +30,12 @@ struct Team {
     score: u8,
 }
 
-static TEAMS_TEMPLATE: &'static str = "<html>
-  <head>
-    <title>{{ year }}</title>
-  </head>
-  <body>
-    <h1>CSL {{ year }}</h1>
-    <ul>
-    {% for team in teams %}
-      <li class=\"{% if loop.first %}champion{% endif %}\">
-      <b>{{team.name}}</b>: {{team.score}}
-      </li>
-    {% endfor %}
-    </ul>
-  </body>
-</html>";
+// Tera doesn't allow `escape` on number values
+static BIG_TABLE_TEMPLATE: &'static str = "<table>
+{% for row in table %}
+<tr>{% for col in row %}<td>{{ col }}</td>{% endfor %}</tr>
+{% endfor %}
+</table>";
 
 pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     let mut tera = Tera::default();
@@ -68,3 +52,19 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     let _ = tera.render("teams.html", &ctx).unwrap();
     b.iter(|| tera.render("teams.html", &ctx));
 }
+
+static TEAMS_TEMPLATE: &'static str = "<html>
+  <head>
+    <title>{{ year }}</title>
+  </head>
+  <body>
+    <h1>CSL {{ year }}</h1>
+    <ul>
+    {% for team in teams %}
+      <li class=\"{% if loop.first %}champion{% endif %}\">
+      <b>{{team.name}}</b>: {{team.score}}
+      </li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>";

@@ -29,6 +29,18 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
     b.iter(|| template.render(&globals));
 }
 
+pub fn teams(b: &mut criterion::Bencher, _: &usize) {
+    let parser = ParserBuilder::with_liquid().extra_filters().build();
+    let template = parser
+        .parse(TEAMS_TEMPLATE)
+        .unwrap();
+
+    let data: liquid::Object =
+        self::serde_yaml::from_str(TEAMS_DATA).unwrap();
+
+    b.iter(|| template.render(&data));
+}
+
 static TEAMS_TEMPLATE: &'static str = "<html>
   <head>
     <title>{{year}}</title>
@@ -57,15 +69,3 @@ teams:
   - name: Shandong
     score: 12
 ";
-
-pub fn teams(b: &mut criterion::Bencher, _: &usize) {
-    let parser = ParserBuilder::with_liquid().extra_filters().build();
-    let template = parser
-        .parse(TEAMS_TEMPLATE)
-        .unwrap();
-
-    let data: liquid::Object =
-        self::serde_yaml::from_str(TEAMS_DATA).unwrap();
-
-    b.iter(|| template.render(&data));
-}
