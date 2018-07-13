@@ -3,6 +3,7 @@
 This repo tries to assess Rust template engine performance. Following the
 download ratings from [crates.io][crates], these six projects are assessed:
 
+- [write!][write]: the std library `write!` macro
 - [Handlebars][handlebars]: Handlebars templating implemented in Rust
 - [Tera][tera]: template engine based on Jinja2/Django templates
 - [Liquid][liquid]: the liquid templating language for Rust
@@ -11,6 +12,7 @@ download ratings from [crates.io][crates], these six projects are assessed:
 - [ructe][ructe]: Rust Compiled Templates, efficient type-safe web page templates
 
 [crates]: https://crates.io/categories/template-engine
+[write]: https://doc.rust-lang.org/std/macro.write.html
 [handlebars]: https://github.com/sunng87/handlebars-rust
 [tera]: https://github.com/Keats/tera
 [liquid]: https://github.com/cobalt-org/liquid-rust

@@ -3,7 +3,9 @@ extern crate criterion;
 extern crate template_benchmarks_rs;
 
 use criterion::{Criterion, Fun};
-use template_benchmarks_rs::{askama_bench, handlebars, horrorshow_bench, liquid, ructe, tera};
+use template_benchmarks_rs::{
+    askama_bench, handlebars, horrorshow_bench, liquid, ructe, std_write, tera,
+};
 
 fn big_table(c: &mut Criterion) {
     c.bench_functions(
@@ -15,6 +17,7 @@ fn big_table(c: &mut Criterion) {
             Fun::new("Liquid", |b, i| liquid::big_table(b, i)),
             Fun::new("Ructe", |b, i| ructe::big_table(b, i)),
             Fun::new("Tera", |b, i| tera::big_table(b, i)),
+            Fun::new("write", |b, i| std_write::big_table(b, i)),
         ],
         100,
     );
@@ -30,6 +33,7 @@ fn teams(c: &mut Criterion) {
             Fun::new("Liquid", |b, i| liquid::teams(b, i)),
             Fun::new("Ructe", |b, i| ructe::teams(b, i)),
             Fun::new("Tera", |b, i| tera::teams(b, i)),
+            Fun::new("write", |b, i| std_write::teams(b, i)),
         ],
         0,
     );
