@@ -10,6 +10,7 @@ download ratings from [crates.io][crates], these six projects are assessed:
 - [Askama][askama]: type-safe, compiled Jinja-like templates for Rust
 - [horrorshow][horrorshow]: a templating library written in rust macros
 - [ructe][ructe]: Rust Compiled Templates, efficient type-safe web page templates
+- [fomat][fomat]: alternative syntax for print/write/format-like macros with a small templating language
 
 [crates]: https://crates.io/categories/template-engine
 [write]: https://doc.rust-lang.org/std/macro.write.html
@@ -19,6 +20,7 @@ download ratings from [crates.io][crates], these six projects are assessed:
 [askama]: https://github.com/djc/askama
 [ructe]: https://github.com/kaj/ructe
 [horrorshow]: https://github.com/Stebalien/horrorshow-rs
+[fomat]: https://github.com/krdln/fomat-macros
 
 ## Results
 

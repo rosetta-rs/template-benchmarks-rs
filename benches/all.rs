@@ -4,7 +4,7 @@ extern crate template_benchmarks_rs;
 
 use criterion::{Criterion, Fun};
 use template_benchmarks_rs::{
-    askama_bench, handlebars, horrorshow_bench, liquid, ructe, std_write, tera,
+    askama_bench, fomat, handlebars, horrorshow_bench, liquid, ructe, std_write, tera,
 };
 
 fn big_table(c: &mut Criterion) {
@@ -12,6 +12,7 @@ fn big_table(c: &mut Criterion) {
         "Big table",
         vec![
             Fun::new("Askama", |b, i| askama_bench::big_table(b, i)),
+            Fun::new("fomat", |b, i| fomat::big_table(b, i)),
             Fun::new("Handlebars", |b, i| handlebars::big_table(b, i)),
             Fun::new("Horrorshow", |b, i| horrorshow_bench::big_table(b, i)),
             Fun::new("Liquid", |b, i| liquid::big_table(b, i)),
@@ -28,6 +29,7 @@ fn teams(c: &mut Criterion) {
         "Teams",
         vec![
             Fun::new("Askama", |b, i| askama_bench::teams(b, i)),
+            Fun::new("fomat", |b, i| fomat::teams(b, i)),
             Fun::new("Handlebars", |b, i| handlebars::teams(b, i)),
             Fun::new("Horrorshow", |b, i| horrorshow_bench::teams(b, i)),
             Fun::new("Liquid", |b, i| liquid::teams(b, i)),
