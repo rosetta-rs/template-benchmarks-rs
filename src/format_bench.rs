@@ -42,7 +42,7 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     };
     let mut team_str = String::new();
     for (i,team) in (&teams).teams.iter().enumerate() {
-        let champion = if i == 0 {
+        let champion = if i != 0 {
             ""
         } else {
             "champion"
