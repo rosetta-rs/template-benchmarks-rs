@@ -13,21 +13,23 @@ download ratings from [crates.io][crates], these four projects are assessed:
 [tera]: https://github.com/Keats/tera
 [liquid]: https://github.com/cobalt-org/liquid-rust
 [askama]: https://github.com/djc/askama
-
+format: std format!
 ## Results
 
 Current results:
 
 ```
-Big table/Askama        time:   [0.3615 ms 0.3633 ms 0.3654 ms]                             
-Big table/Handlebars    time:   [7.2553 ms 7.2673 ms 7.2812 ms]
-Big table/Horrorshow    time:   [0.1130 ms 0.1135 ms 0.1140 ms]                                 
-Big table/Liquid        time:   [5.6857 ms 5.6959 ms 5.7071 ms]                              
-Big table/Tera          time:   [1.1846 ms 1.1879 ms 1.1919 ms]                            
+Big table/format        time:   [544.06 ns 551.34 ns 559.22 ns]
+Big table/Horrorshow    time:   [70.698 us 71.822 us 72.993 us]
+Big table/Askama        time:   [202.15 us 202.69 us 203.31 us]
+Big table/Tera          time:   [723.69 us 731.77 us 740.79 us]
+Big table/Liquid        time:   [3.5118 ms 3.5522 ms 3.5972 ms]
+Big table/Handlebars    time:   [6.2366 ms 6.2983 ms 6.3702 ms]
 
-Teams/Askama            time:   [ 2.126 us  2.131 us  2.137 us]                          
-Teams/Handlebars        time:   [27.815 us 27.884 us 27.971 us]                              
-Teams/Horrorshow        time:   [ 0.541 us  0.542 us  0.543 us]                              
-Teams/Liquid            time:   [17.445 us 17.551 us 17.675 us]                          
-Teams/Tera              time:   [13.104 us 13.161 us 13.226 us]                        
+Teams/format            time:   [23.186 ns 23.250 ns 23.334 ns]                    
+Teams/Horrorshow        time:   [345.43 ns 347.31 ns 349.75 ns]
+Teams/Askama            time:   [1.2087 us 1.2133 us 1.2196 us]
+Teams/Tera              time:   [7.9691 us 7.9936 us 8.0235 us]
+Teams/Liquid            time:   [10.348 us 10.378 us 10.414 us]
+Teams/Handlebars        time:   [17.202 us 17.510 us 17.831 us]
 ```
