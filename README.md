@@ -13,23 +13,28 @@ download ratings from [crates.io][crates], these four projects are assessed:
 [tera]: https://github.com/Keats/tera
 [liquid]: https://github.com/cobalt-org/liquid-rust
 [askama]: https://github.com/djc/askama
-format: std format!
+[fomat]: https://github.com/krdln/fomat-macros
+format: rust std format!
+
 ## Results
 
 Current results:
 
 ```
-Big table/format        time:   [544.06 ns 551.34 ns 559.22 ns]
-Big table/Horrorshow    time:   [70.698 us 71.822 us 72.993 us]
-Big table/Askama        time:   [202.15 us 202.69 us 203.31 us]
-Big table/Tera          time:   [723.69 us 731.77 us 740.79 us]
-Big table/Liquid        time:   [3.5118 ms 3.5522 ms 3.5972 ms]
-Big table/Handlebars    time:   [6.2366 ms 6.2983 ms 6.3702 ms]
+test on Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
+Big table/fomat         time:   [555.00 ns 559.41 ns 564.66 ns]
+Big table/format        time:   [570.29 ns 577.65 ns 585.73 ns]
+Big table/Horrorshow    time:   [68.954 us 69.240 us 69.573 us]
+Big table/Askama        time:   [206.32 us 207.04 us 207.84 us]
+Big table/Tera          time:   [754.16 us 764.86 us 775.89 us]
+Big table/Handlebars    time:   [6.2264 ms 6.2349 ms 6.2442 ms]
+Big table/Liquid        time:   [3.5014 ms 3.5058 ms 3.5105 ms]
 
-Teams/format            time:   [23.186 ns 23.250 ns 23.334 ns]                    
-Teams/Horrorshow        time:   [345.43 ns 347.31 ns 349.75 ns]
-Teams/Askama            time:   [1.2087 us 1.2133 us 1.2196 us]
-Teams/Tera              time:   [7.9691 us 7.9936 us 8.0235 us]
-Teams/Liquid            time:   [10.348 us 10.378 us 10.414 us]
-Teams/Handlebars        time:   [17.202 us 17.510 us 17.831 us]
+Teams/format            time:   [24.819 ns 24.901 ns 24.997 ns]
+Teams/fomat             time:   [27.168 ns 27.302 ns 27.477 ns]
+Teams/Horrorshow        time:   [349.35 ns 354.03 ns 359.65 ns]
+Teams/Askama            time:   [1.2288 us 1.2460 us 1.2690 us]
+Teams/Tera              time:   [8.6426 us 8.7004 us 8.7660 us]
+Teams/Liquid            time:   [10.885 us 10.948 us 11.020 us]
+Teams/Handlebars        time:   [18.000 us 18.154 us 18.311 us]
 ```
