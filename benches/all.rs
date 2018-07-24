@@ -2,7 +2,7 @@
 extern crate criterion;
 extern crate template_benchmarks_rs;
 
-use template_benchmarks_rs::{askama_bench, handlebars, horrorshow_bench, liquid, tera, format_bench, fomat_bench};
+use template_benchmarks_rs::{askama_bench, handlebars, horrorshow_bench, liquid, tera, write_bench, fomat_bench};
 use criterion::{Criterion, Fun};
 
 fn big_table(c: &mut Criterion) {
@@ -12,7 +12,7 @@ fn big_table(c: &mut Criterion) {
         Fun::new("Horrorshow", |b, i| horrorshow_bench::big_table(b, i)),
         Fun::new("Liquid", |b, i| liquid::big_table(b, i)),
         Fun::new("Tera", |b, i| tera::big_table(b, i)),
-        Fun::new("format", |b, i| format_bench::big_table(b, i)),
+        Fun::new("write", |b, i| write_bench::big_table(b, i)),
         Fun::new("fomat", |b, i| fomat_bench::big_table(b, i)),
     ], 50);
 }
@@ -24,7 +24,7 @@ fn teams(c: &mut Criterion) {
         Fun::new("Horrorshow", |b, i| horrorshow_bench::teams(b, i)),
         Fun::new("Liquid", |b, i| liquid::teams(b, i)),
         Fun::new("Tera", |b, i| tera::teams(b, i)),
-        Fun::new("format", |b, i| format_bench::teams(b, i)),
+        Fun::new("write", |b, i| write_bench::teams(b, i)),
         Fun::new("fomat", |b, i| fomat_bench::teams(b, i)),
     ], 0);
 }

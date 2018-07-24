@@ -13,5 +13,5 @@ pub mod handlebars;
 pub mod horrorshow_bench;
 pub mod liquid;
 pub mod tera;
-pub mod format_bench;
+pub mod write_bench;
 pub mod fomat_bench;
