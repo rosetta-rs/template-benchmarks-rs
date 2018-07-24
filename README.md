@@ -7,27 +7,35 @@ download ratings from [crates.io][crates], these four projects are assessed:
 - [Tera][tera]
 - [Liquid][liquid]
 - [Askama][askama]
+- [Fomat][fomat]
 
 [crates]: https://crates.io/categories/template-engine
 [handlebars]: https://github.com/sunng87/handlebars-rust
 [tera]: https://github.com/Keats/tera
 [liquid]: https://github.com/cobalt-org/liquid-rust
 [askama]: https://github.com/djc/askama
+[fomat]: https://github.com/krdln/fomat-macros
+format: rust std format!
 
 ## Results
 
 Current results:
 
 ```
-Big table/Askama        time:   [0.3615 ms 0.3633 ms 0.3654 ms]                             
-Big table/Handlebars    time:   [7.2553 ms 7.2673 ms 7.2812 ms]
-Big table/Horrorshow    time:   [0.1130 ms 0.1135 ms 0.1140 ms]                                 
-Big table/Liquid        time:   [5.6857 ms 5.6959 ms 5.7071 ms]                              
-Big table/Tera          time:   [1.1846 ms 1.1879 ms 1.1919 ms]                            
+test on Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
+Big table/fomat         time:   [555.00 ns 559.41 ns 564.66 ns]
+Big table/format        time:   [570.29 ns 577.65 ns 585.73 ns]
+Big table/Horrorshow    time:   [68.954 us 69.240 us 69.573 us]
+Big table/Askama        time:   [206.32 us 207.04 us 207.84 us]
+Big table/Tera          time:   [754.16 us 764.86 us 775.89 us]
+Big table/Handlebars    time:   [6.2264 ms 6.2349 ms 6.2442 ms]
+Big table/Liquid        time:   [3.5014 ms 3.5058 ms 3.5105 ms]
 
-Teams/Askama            time:   [ 2.126 us  2.131 us  2.137 us]                          
-Teams/Handlebars        time:   [27.815 us 27.884 us 27.971 us]                              
-Teams/Horrorshow        time:   [ 0.541 us  0.542 us  0.543 us]                              
-Teams/Liquid            time:   [17.445 us 17.551 us 17.675 us]                          
-Teams/Tera              time:   [13.104 us 13.161 us 13.226 us]                        
+Teams/format            time:   [24.819 ns 24.901 ns 24.997 ns]
+Teams/fomat             time:   [27.168 ns 27.302 ns 27.477 ns]
+Teams/Horrorshow        time:   [349.35 ns 354.03 ns 359.65 ns]
+Teams/Askama            time:   [1.2288 us 1.2460 us 1.2690 us]
+Teams/Tera              time:   [8.6426 us 8.7004 us 8.7660 us]
+Teams/Liquid            time:   [10.885 us 10.948 us 11.020 us]
+Teams/Handlebars        time:   [18.000 us 18.154 us 18.311 us]
 ```
