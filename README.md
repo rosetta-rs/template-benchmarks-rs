@@ -23,19 +23,20 @@ Current results:
 
 ```
 test on Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz
-Big table/fomat         time:   [555.00 ns 559.41 ns 564.66 ns]
-Big table/format        time:   [570.29 ns 577.65 ns 585.73 ns]
-Big table/Horrorshow    time:   [68.954 us 69.240 us 69.573 us]
-Big table/Askama        time:   [206.32 us 207.04 us 207.84 us]
-Big table/Tera          time:   [754.16 us 764.86 us 775.89 us]
-Big table/Handlebars    time:   [6.2264 ms 6.2349 ms 6.2442 ms]
-Big table/Liquid        time:   [3.5014 ms 3.5058 ms 3.5105 ms]
 
-Teams/format            time:   [24.819 ns 24.901 ns 24.997 ns]
-Teams/fomat             time:   [27.168 ns 27.302 ns 27.477 ns]
-Teams/Horrorshow        time:   [349.35 ns 354.03 ns 359.65 ns]
-Teams/Askama            time:   [1.2288 us 1.2460 us 1.2690 us]
-Teams/Tera              time:   [8.6426 us 8.7004 us 8.7660 us]
-Teams/Liquid            time:   [10.885 us 10.948 us 11.020 us]
-Teams/Handlebars        time:   [18.000 us 18.154 us 18.311 us]
+Big table/write         time:   [523.04 ns 525.76 ns 529.26 ns]
+Big table/fomat         time:   [546.58 ns 550.28 ns 554.21 ns]
+Big table/Horrorshow    time:   [70.697 us 71.594 us 72.523 us]
+Big table/Askama        time:   [206.25 us 207.56 us 208.87 us]
+Big table/Tera          time:   [764.59 us 770.04 us 776.26 us]
+Big table/Liquid        time:   [3.5647 ms 3.5975 ms 3.6311 ms]
+Big table/Handlebars    time:   [6.2990 ms 6.4261 ms 6.5593 ms]
+
+Teams/write             time:   [24.129 ns 24.181 ns 24.243 ns]
+Teams/fomat             time:   [26.103 ns 26.200 ns 26.336 ns]
+Teams/Horrorshow        time:   [343.80 ns 346.20 ns 349.62 ns]
+Teams/Askama            time:   [1.2350 us 1.2409 us 1.2473 us]
+Teams/Tera              time:   [8.1809 us 8.2071 us 8.2376 us]
+Teams/Liquid            time:   [10.473 us 10.504 us 10.538 us]
+Teams/Handlebars        time:   [16.225 us 16.293 us 16.370 us]
 ```
