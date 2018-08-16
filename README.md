@@ -7,12 +7,14 @@ download ratings from [crates.io][crates], these four projects are assessed:
 - [Tera][tera]
 - [Liquid][liquid]
 - [Askama][askama]
+- [ructe][ructe]
 
 [crates]: https://crates.io/categories/template-engine
 [handlebars]: https://github.com/sunng87/handlebars-rust
 [tera]: https://github.com/Keats/tera
 [liquid]: https://github.com/cobalt-org/liquid-rust
 [askama]: https://github.com/djc/askama
+[ructe]: https://github.com/kaj/ructe
 
 ## Results
 
