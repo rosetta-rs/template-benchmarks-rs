@@ -5,16 +5,19 @@ authors = ["Dirkjan Ochtman <dirkjan@ochtman.nl>"]
 build = "src/build.rs"
 
 [dependencies]
-askama = { git = "https://github.com/djc/askama" }
+askama = "0.7"
 criterion = "0.2"
-handlebars = { git = "https://github.com/sunng87/handlebars-rust" }
-horrorshow = { git = "https://github.com/Stebalien/horrorshow-rs" }
-liquid = { git = "https://github.com/cobalt-org/liquid-rust" }
+handlebars = "1"
+horrorshow = "0.6"
+liquid = "0.15"
 serde = "1"
 serde_derive = "1"
 serde_json = "1"
 serde_yaml = "0.7"
-tera = { git = "https://github.com/Keats/tera" }
+tera = "0.11"
+
+[build-dependencies]
+ructe = "0.4"
 
 [build-dependencies]
 ructe = { git = "https://github.com/kaj/ructe" }
