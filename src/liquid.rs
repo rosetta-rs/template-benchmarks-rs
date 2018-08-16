@@ -17,11 +17,14 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
 
     let template = ParserBuilder::with_liquid()
         .build()
-        .parse("<table>
+        .parse(
+            "<table>
 {% for row in table %}
 <tr>{% for col in row %}<td>{{ col|escape }}</td>{% endfor %}</tr>
 {% endfor %}
-</table>").unwrap();
+</table>",
+        )
+        .unwrap();
 
     let mut globals = Object::new();
     globals.insert("table".to_string(), Value::Array(table));
@@ -31,12 +34,9 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
 
 pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     let parser = ParserBuilder::with_liquid().extra_filters().build();
-    let template = parser
-        .parse(TEAMS_TEMPLATE)
-        .unwrap();
+    let template = parser.parse(TEAMS_TEMPLATE).unwrap();
 
-    let data: liquid::Object =
-        self::serde_yaml::from_str(TEAMS_DATA).unwrap();
+    let data: liquid::Object = self::serde_yaml::from_str(TEAMS_DATA).unwrap();
 
     b.iter(|| template.render(&data));
 }

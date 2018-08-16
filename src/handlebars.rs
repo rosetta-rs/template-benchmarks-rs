@@ -3,7 +3,7 @@ extern crate serde_json;
 
 use criterion;
 
-use self::handlebars::{Handlebars, to_json};
+use self::handlebars::{to_json, Handlebars};
 
 use self::serde_json::value::Value as Json;
 
@@ -21,7 +21,9 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
 
     let ctx = BigTable { table };
     let mut handlebars = Handlebars::new();
-    handlebars.register_template_string("big-table.html", SOURCE).unwrap();
+    handlebars
+        .register_template_string("big-table.html", SOURCE)
+        .unwrap();
     b.iter(|| handlebars.render("big-table.html", &ctx).ok().unwrap());
 }
 
