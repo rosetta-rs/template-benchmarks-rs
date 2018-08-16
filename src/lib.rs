@@ -10,4 +10,7 @@ pub mod askama_bench;
 pub mod handlebars;
 pub mod horrorshow_bench;
 pub mod liquid;
+pub mod ructe;
 pub mod tera;
+
+include!(concat!(env!("OUT_DIR"), "/templates.rs"));
