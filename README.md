@@ -1,14 +1,14 @@
 # Rust template engine benchmarks
 
 This repo tries to assess Rust template engine performance. Following the
-download ratings from [crates.io][crates], these four projects are assessed:
+download ratings from [crates.io][crates], these six projects are assessed:
 
-- [Handlebars][handlebars]
-- [Tera][tera]
-- [Liquid][liquid]
-- [Askama][askama]
-- [horrorshow][horrorshow]
-- [ructe][ructe]
+- [Handlebars][handlebars]: Handlebars templating implemented in Rust
+- [Tera][tera]: template engine based on Jinja2/Django templates
+- [Liquid][liquid]: the liquid templating language for Rust
+- [Askama][askama]: type-safe, compiled Jinja-like templates for Rust
+- [horrorshow][horrorshow]: a templating library written in rust macros
+- [ructe][ructe]: Rust Compiled Templates, efficient type-safe web page templates
 
 [crates]: https://crates.io/categories/template-engine
 [handlebars]: https://github.com/sunng87/handlebars-rust
