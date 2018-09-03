@@ -16,7 +16,7 @@ fn big_table(c: &mut Criterion) {
             Fun::new("Ructe", |b, i| ructe::big_table(b, i)),
             Fun::new("Tera", |b, i| tera::big_table(b, i)),
         ],
-        50,
+        100,
     );
 }
 
