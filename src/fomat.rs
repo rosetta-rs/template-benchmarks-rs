@@ -9,16 +9,17 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
         }
         table.push(inner);
     }
-    let output = fomat!(
+    b.iter(||
+        fomat!(
             "<table>\n"
-            for r1 in table {
+            for r1 in &table {
                 "<tr>\n" 
-                for r2 in &r1 { "<td>"(r2)"</td>" }
+                for r2 in r1 { "<td>"(r2)"</td>" }
                 "\n</tr>\n"
             }
             "</table>"
-            );
-    b.iter(|| output.to_owned());
+            )
+    );
 }
 
 pub fn teams(b: &mut criterion::Bencher, _: &usize) {
@@ -43,7 +44,7 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
             },
         ],
     };
-    let output = fomat!(
+    b.iter(|| fomat!(
 "<html>
   <head>
     <title>"(teams.year)"</title>
@@ -61,8 +62,7 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     }
 "\n   </ul>
   </body>
-</html>");
-    b.iter(|| output.to_owned());
+</html>"));
 }
 
 struct Teams {

@@ -10,18 +10,18 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
         }
         table.push(inner);
     }
-    let mut output = Vec::new();
-    write!(&mut output, "<table>").unwrap();
-    for r1 in table {
-        write!(&mut output, "<tr>\n").unwrap();
-        for r2 in r1 {
-            write!(&mut output, "<td>{col}</td>", col = r2).unwrap();
+    b.iter(|| {
+        let mut output = Vec::new();
+        write!(&mut output, "<table>").unwrap();
+        for r1 in &table {
+            write!(&mut output, "<tr>\n").unwrap();
+            for r2 in r1 {
+                write!(&mut output, "<td>{col}</td>", col = r2).unwrap();
+            }
+            write!(&mut output, "</tr>\n").unwrap();
         }
-        write!(&mut output, "</tr>\n").unwrap();
-    }
-    write!(&mut output, "</table>").unwrap();
-
-    b.iter(|| output.to_owned());
+        write!(&mut output, "</table>").unwrap();
+    });
 }
 
 pub fn teams(b: &mut criterion::Bencher, _: &usize) {
@@ -46,36 +46,37 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
             },
         ],
     };
-    let mut output = Vec::new();
-    write!(
-        &mut output,
-        "<html>
-        <head>
-            <title>{year}</title>
-        </head>
-        <body>
-            <h1>CSL {year}</h1>
-            <ul>",
-        year = teams.year
-    ).unwrap();
-    for (i, team) in (&teams).teams.iter().enumerate() {
-        let champion = if i != 0 { "" } else { "champion" };
+    b.iter(|| {
+        let mut output = Vec::new();
         write!(
             &mut output,
-            "<li class=\"{champion}\">
-            <b>{name}</b>: {score}",
-            champion = champion,
-            name = team.name,
-            score = team.score
+            "<html>
+            <head>
+                <title>{year}</title>
+            </head>
+            <body>
+                <h1>CSL {year}</h1>
+                <ul>",
+            year = teams.year
         ).unwrap();
-    }
-    write!(
-        &mut output,
-        "   </ul>
-        </body>
-        </html>"
-    ).unwrap();
-    b.iter(|| output.to_owned());
+        for (i, team) in (&teams).teams.iter().enumerate() {
+            let champion = if i != 0 { "" } else { "champion" };
+            write!(
+                &mut output,
+                "<li class=\"{champion}\">
+                <b>{name}</b>: {score}",
+                champion = champion,
+                name = team.name,
+                score = team.score
+            ).unwrap();
+        }
+        write!(
+            &mut output,
+            "   </ul>
+            </body>
+            </html>"
+        ).unwrap();
+    });
 }
 
 struct Teams {
