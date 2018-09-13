@@ -27,7 +27,7 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
         .unwrap();
 
     let mut globals = Object::new();
-    globals.insert("table".to_string(), Value::Array(table));
+    globals.insert("table".into(), Value::Array(table));
 
     b.iter(|| template.render(&globals));
 }
