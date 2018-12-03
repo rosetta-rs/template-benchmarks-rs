@@ -1,7 +1,7 @@
 # Rust template engine benchmarks
 
 This repo tries to assess Rust template engine performance. Following the
-download ratings from [crates.io][crates], these six projects are assessed:
+download ratings from [crates.io][crates], these nine projects are assessed:
 
 - [write!][write]: the std library `write!` macro
 - [Handlebars][handlebars]: Handlebars templating implemented in Rust
@@ -11,6 +11,7 @@ download ratings from [crates.io][crates], these six projects are assessed:
 - [horrorshow][horrorshow]: a templating library written in rust macros
 - [ructe][ructe]: Rust Compiled Templates, efficient type-safe web page templates
 - [fomat][fomat]: alternative syntax for print/write/format-like macros with a small templating language
+- [markup][markup]: A blazing fast, type-safe template engine for Rust.
 
 [crates]: https://crates.io/categories/template-engine
 [write]: https://doc.rust-lang.org/std/macro.write.html
@@ -21,6 +22,7 @@ download ratings from [crates.io][crates], these six projects are assessed:
 [ructe]: https://github.com/kaj/ructe
 [horrorshow]: https://github.com/Stebalien/horrorshow-rs
 [fomat]: https://github.com/krdln/fomat-macros
+[markup]: https://github.com/utkarshkukreti/markup.rs
 
 ## Results
 
