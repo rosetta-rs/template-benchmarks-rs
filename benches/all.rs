@@ -4,7 +4,7 @@ extern crate template_benchmarks_rs;
 
 use criterion::{Criterion, Fun};
 use template_benchmarks_rs::{
-    askama_bench, fomat, handlebars, horrorshow_bench, liquid, ructe, std_write, tera,
+    askama_bench, fomat, handlebars, horrorshow_bench, liquid, markup_bench, ructe, std_write, tera,
 };
 
 fn big_table(c: &mut Criterion) {
@@ -16,6 +16,7 @@ fn big_table(c: &mut Criterion) {
             Fun::new("Handlebars", |b, i| handlebars::big_table(b, i)),
             Fun::new("Horrorshow", |b, i| horrorshow_bench::big_table(b, i)),
             Fun::new("Liquid", |b, i| liquid::big_table(b, i)),
+            Fun::new("Markup", |b, i| markup_bench::big_table(b, i)),
             Fun::new("Ructe", |b, i| ructe::big_table(b, i)),
             Fun::new("Tera", |b, i| tera::big_table(b, i)),
             Fun::new("write", |b, i| std_write::big_table(b, i)),
@@ -33,6 +34,7 @@ fn teams(c: &mut Criterion) {
             Fun::new("Handlebars", |b, i| handlebars::teams(b, i)),
             Fun::new("Horrorshow", |b, i| horrorshow_bench::teams(b, i)),
             Fun::new("Liquid", |b, i| liquid::teams(b, i)),
+            Fun::new("Markup", |b, i| markup_bench::teams(b, i)),
             Fun::new("Ructe", |b, i| ructe::teams(b, i)),
             Fun::new("Tera", |b, i| tera::teams(b, i)),
             Fun::new("write", |b, i| std_write::teams(b, i)),
