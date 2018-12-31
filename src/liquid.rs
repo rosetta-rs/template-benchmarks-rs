@@ -17,6 +17,7 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
 
     let template = ParserBuilder::with_liquid()
         .build()
+        .unwrap()
         .parse(
             "<table>
 {% for row in table %}
@@ -33,7 +34,7 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
 }
 
 pub fn teams(b: &mut criterion::Bencher, _: &usize) {
-    let parser = ParserBuilder::with_liquid().extra_filters().build();
+    let parser = ParserBuilder::with_liquid().extra_filters().build().unwrap();
     let template = parser.parse(TEAMS_TEMPLATE).unwrap();
 
     let data: Object = self::serde_yaml::from_str(TEAMS_DATA).unwrap();
