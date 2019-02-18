@@ -9,6 +9,7 @@ extern crate serde_derive;
 extern crate fomat_macros;
 #[macro_use]
 extern crate markup;
+extern crate yarte;
 
 pub mod askama_bench;
 pub mod fomat;
@@ -19,5 +20,6 @@ pub mod markup_bench;
 pub mod ructe;
 pub mod std_write;
 pub mod tera;
+pub mod yarte_bench;
 
 include!(concat!(env!("OUT_DIR"), "/templates.rs"));
