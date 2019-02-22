@@ -5,8 +5,11 @@ extern crate template_benchmarks_rs;
 use criterion::{Criterion, Fun};
 use template_benchmarks_rs::{
     askama_bench, fomat, handlebars, horrorshow_bench, liquid, markup_bench,
-    maud_bench, ructe, std_write, tera, yarte_bench,
+    ructe, std_write, tera, yarte_bench,
 };
+
+#[cfg(feature = "nightly")]
+use template_benchmarks_rs::maud_bench;
 
 fn big_table(c: &mut Criterion) {
     c.bench_functions(
@@ -18,7 +21,10 @@ fn big_table(c: &mut Criterion) {
             Fun::new("Horrorshow", |b, i| horrorshow_bench::big_table(b, i)),
             Fun::new("Liquid", |b, i| liquid::big_table(b, i)),
             Fun::new("Markup", |b, i| markup_bench::big_table(b, i)),
+
+            #[cfg(feature = "nightly")]
             Fun::new("Maud", |b, i| maud_bench::big_table(b, i)),
+
             Fun::new("Ructe", |b, i| ructe::big_table(b, i)),
             Fun::new("Tera", |b, i| tera::big_table(b, i)),
             Fun::new("Yarte", |b, i| yarte_bench::big_table(b, i)),
@@ -38,7 +44,10 @@ fn teams(c: &mut Criterion) {
             Fun::new("Horrorshow", |b, i| horrorshow_bench::teams(b, i)),
             Fun::new("Liquid", |b, i| liquid::teams(b, i)),
             Fun::new("Markup", |b, i| markup_bench::teams(b, i)),
+
+            #[cfg(feature = "nightly")]
             Fun::new("Maud", |b, i| maud_bench::teams(b, i)),
+
             Fun::new("Ructe", |b, i| ructe::teams(b, i)),
             Fun::new("Tera", |b, i| tera::teams(b, i)),
             Fun::new("Yarte", |b, _| yarte_bench::teams(b)),
