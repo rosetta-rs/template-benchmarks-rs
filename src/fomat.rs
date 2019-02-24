@@ -53,12 +53,9 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     <h1>CSL "(teams.year)"</h1>
     <ul>"
     for (i,team) in (&teams).teams.iter().enumerate() {
-        "    <li class=\""(match i {
-            0 => { "champion" }
-            _ => { "" }
-        })"\">\n"
-            "      <b>"(team.name)"</b>: "(team.score)
-"\n    </li>\n"
+        "    <li class=\"" if i == 0 { "champion" } "\">\n"
+        "      <b>"(team.name)"</b>: "(team.score)"\n"
+        "    </li>\n"
     }
 "\n   </ul>
   </body>
