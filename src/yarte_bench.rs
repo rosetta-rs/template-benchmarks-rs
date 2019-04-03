@@ -14,7 +14,7 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
 }
 
 #[derive(Template)]
-#[template(path = "big-table.hbs.html")]
+#[template(path = "big-table.hbs")]
 struct BigTable {
     table: Vec<Vec<usize>>,
 }
@@ -46,7 +46,7 @@ pub fn teams(b: &mut criterion::Bencher) {
 }
 
 #[derive(Template)]
-#[template(path = "teams.hbs.html")]
+#[template(path = "teams.hbs")]
 struct Teams {
     year: u16,
     teams: Vec<Team>,
