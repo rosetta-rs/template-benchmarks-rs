@@ -54,7 +54,7 @@ readme:
 	echo '' >> README.md
 	echo 'Numbers, as output by Criterion:' >> README.md
 	echo '' >> README.md
-	echo '```shell' >> README.md
+	echo '```java' >> README.md
 	cat bench-data.log >> README.md
 	echo '```' >> README.md
 	echo '' >> README.md
@@ -65,7 +65,7 @@ readme:
 	echo '```' >> README.md
 	echo '' >> README.md
 	echo '# for extract to file' >> README.md
-	echo '```shell' >> README.md
+	echo '```sh' >> README.md
 	echo 'just log file #replace file with the filename you want it extracted to' >> README.md
 	echo '```' >> README.md
 	echo '' >> README.md

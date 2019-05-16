@@ -47,13 +47,12 @@ Teams/write             time:   [446.39 ns 455.52 ns 465.22 ns]
 
 ## Running the benchmarks
 
-```javascript
+```sh
 just bench
 ```
 
 # for extract to file
-
-```shell
+```sh
 just log file #replace file with the filename you want it extracted to
 ```
 
