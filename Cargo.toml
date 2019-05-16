@@ -1,26 +1,19 @@
 [package]
 name = "template-benchmarks-rs"
-version = "0.1.0"
-authors = ["Dirkjan Ochtman <dirkjan@ochtman.nl>"]
-build = "src/build.rs"
+version = "0.0.1"
+edition = "2018"
 
 [dependencies]
-askama = { git = "https://github.com/djc/askama" }
-criterion = "0.2"
-handlebars = { git = "https://github.com/sunng87/handlebars-rust" }
-horrorshow = { git = "https://github.com/Stebalien/horrorshow-rs" }
-liquid = { git = "https://github.com/cobalt-org/liquid-rust" }
-markup = { git = "https://github.com/utkarshkukreti/markup.rs" }
-yarte = { git = "https://gitlab.com/r-iendo/yarte" }
+criterion = "0.2.11"
+handlebars = "1.1.0"
+fomat-macros = "0.3.1"
+horrorshow = "0.6.6"
+markup = "0.3.1"
+maud = "0.20.0"
 serde = "1"
 serde_derive = "1"
 serde_json = "1"
 serde_yaml = "0.8"
-tera = { git = "https://github.com/Keats/tera" }
-fomat-macros = { git = "https://github.com/krdln/fomat-macros" }
-
-[build-dependencies]
-ructe = { git = "https://github.com/kaj/ructe" }
 
 [[bench]]
 name = "all"

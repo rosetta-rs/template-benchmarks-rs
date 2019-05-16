@@ -1,5 +1,9 @@
 <table>
-{{#-each table-}}
-<tr>{{#each key}}<td>{{ key }}</td>{{/each}}</tr>
-{{/-each-}}
+{{~#each table~}}
+<tr>
+    {{~#each key~}}
+        <td>{{ key }}</td>
+    {{~/each~}}
+</tr>
+{{~/each~}}
 </table>

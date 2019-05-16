@@ -1,5 +1,9 @@
 <table>
-{% for row in table %}
-<tr>{% for col in row %}<td>{{ col|escape }}</td>{% endfor %}</tr>
-{% endfor %}
+	{% for row in table %}
+	<tr>
+		{% for col in row %}
+		<td>{{ col | escape }}</td>
+		{% endfor %}
+	</tr>
+	{% endfor %}
 </table>

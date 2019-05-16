@@ -9,17 +9,17 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
         }
         table.push(inner);
     }
-    b.iter(||
+    b.iter(|| {
         fomat!(
-            "<table>\n"
-            for r1 in &table {
-                "<tr>\n" 
-                for r2 in r1 { "<td>"(r2)"</td>" }
-                "\n</tr>\n"
-            }
-            "</table>"
-            )
-    );
+        "<table>"
+        for r1 in &table {
+            "<tr>"
+            for r2 in r1 { "<td>"(r2)"</td>" }
+            "</tr>"
+        }
+        "</table>"
+        )
+    });
 }
 
 pub fn teams(b: &mut criterion::Bencher, _: &usize) {
@@ -44,22 +44,19 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
             },
         ],
     };
-    b.iter(|| fomat!(
-"<html>
-  <head>
-    <title>"(teams.year)"</title>
-  </head>
-  <body>
-    <h1>CSL "(teams.year)"</h1>
-    <ul>"
+    b.iter(|| {
+        fomat!(
+"<html><head><title>"(teams.year)"</title></head><body><h1>CSL "(teams.year)"</h1><ul>"
     for (i,team) in (&teams).teams.iter().enumerate() {
-        "    <li class=\"" if i == 0 { "champion" } "\">\n"
-        "      <b>"(team.name)"</b>: "(team.score)"\n"
-        "    </li>\n"
+        "<li class=\""(match i {
+            0 => { "champion" }
+            _ => { "" }
+        })"\">"
+            "<b>"(team.name)"</b>: "(team.score)
+        "</li>"
     }
-"\n   </ul>
-  </body>
-</html>"));
+"</ul></body></html>")
+    });
 }
 
 struct Teams {

@@ -16,7 +16,7 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
 }
 
 fn big_table_render(table: &Vec<Vec<usize>>) -> Result<String, Error> {
-    let page = html! {
+    let page = horrorshow::html! {
         table {
             @ for row in table {
                 tr {
@@ -57,7 +57,7 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
 }
 
 fn teams_render(teams: &Teams) -> Result<String, Error> {
-    let page = html! {
+    let page = horrorshow::html! {
         html {
             head {
                 title { : teams.year }
