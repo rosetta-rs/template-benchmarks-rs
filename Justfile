@@ -5,11 +5,11 @@
 bench:
 	cargo bench
 
-# Logs Benchmark data
+# Logs Benchmark Data
 log:
 	cargo bench | grep time > bench-data.log
 
-# Exports Benchmark data to a file "FILE"
+# Exports Benchmark Data to File "filename"
 export FILE:
 	cargo bench | grep time >  {{FILE}}
 
@@ -18,11 +18,9 @@ svg:
 	cp target/criterion/Big\ table/report/violin.svg big-table.svg
 	cp target/criterion/Teams/report/violin.svg teams.svg
 
-# Runs benchLogs
-test: log svg
 
-# Runs benchmarks and updates README
-update: test readme
+# Runs Benchmarks & Updates README
+update: log svg readme
 
 # Updates Readme
 readme:
@@ -56,19 +54,19 @@ readme:
 	echo '' >> README.md
 	echo 'Numbers, as output by Criterion:' >> README.md
 	echo '' >> README.md
-	echo '```' >> README.md
+	echo '```shell' >> README.md
 	cat bench-data.log >> README.md
 	echo '```' >> README.md
 	echo '' >> README.md
 	echo '## Running the benchmarks' >> README.md
 	echo '' >> README.md
-	echo '```' >> README.md
+	echo '```shell' >> README.md
 	echo 'just bench' >> README.md
 	echo '```' >> README.md
 	echo '' >> README.md
 	echo '# for extract to file' >> README.md
-	echo '```' >> README.md
-	echo '' >> README.md
+	echo '```shell' >> README.md
+	echo 'just log file #replace file with the filename you want it extracted to' >> README.md
 	echo '```' >> README.md
 	echo '' >> README.md
 	echo 'Plots will be rendered if `gnuplot` is installed and will be available in the `target/criterion` folder.' >> README.md
