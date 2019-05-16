@@ -60,7 +60,7 @@ readme:
 	echo '' >> README.md
 	echo '## Running the benchmarks' >> README.md
 	echo '' >> README.md
-	echo '```shell' >> README.md
+	echo '```sh' >> README.md
 	echo 'just bench' >> README.md
 	echo '```' >> README.md
 	echo '' >> README.md
