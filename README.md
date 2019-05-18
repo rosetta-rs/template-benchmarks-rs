@@ -51,9 +51,15 @@ Teams/write             time:   [426.79 ns 428.72 ns 430.62 ns]
 just bench
 ```
 
-# for extract to file
+## For extracting benchmarks to file
 ```sh
 just log file #replace file with the filename you want it extracted to
 ```
 
+## To sort benchmarks (Note does not take units into consideration)
+```shell
+just bigtable # for Big Table Benchmark
+just teams    # for Teams Benchmark
+```
 Plots will be rendered if `gnuplot` is installed and will be available in the `target/criterion` folder.
+[just](https://github.com/casey/just) must be installed to use the just commands.

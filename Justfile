@@ -18,9 +18,16 @@ svg:
 	cp target/criterion/Big\ table/report/violin.svg big-table.svg
 	cp target/criterion/Teams/report/violin.svg teams.svg
 
-
 # Runs Benchmarks & Updates README
 update: log svg readme
+
+# Sort Big Table Performance
+bigtable:
+	cat bench-data.log | grep 'Big table' | sort -n -k 6
+
+# Sort Team Performance
+teams:
+	cat bench-data.log | grep Teams | sort -n -k 5
 
 # Updates Readme
 readme:
@@ -64,9 +71,15 @@ readme:
 	echo 'just bench' >> README.md
 	echo '```' >> README.md
 	echo '' >> README.md
-	echo '# for extract to file' >> README.md
+	echo '## For extracting benchmarks to file' >> README.md
 	echo '```sh' >> README.md
 	echo 'just log file #replace file with the filename you want it extracted to' >> README.md
 	echo '```' >> README.md
 	echo '' >> README.md
+	echo '## To sort benchmarks (Note does not take units into consideration)' >> README.md
+	echo '```shell' >> README.md
+	echo 'just bigtable # for Big Table Benchmark' >> README.md
+	echo 'just teams    # for Teams Benchmark' >> README.md
+	echo '```' >> README.md
 	echo 'Plots will be rendered if `gnuplot` is installed and will be available in the `target/criterion` folder.' >> README.md
+	echo '[just](https://github.com/casey/just) must be installed to use the just commands.' >> README.md
