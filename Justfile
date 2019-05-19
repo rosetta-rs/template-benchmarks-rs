@@ -71,10 +71,10 @@ readme:
 	EOL
 	echo '```java' >> README.md
 	echo 'Big Table' >> README.md
-	awk -f convert.awk bench-data.log | grep Big-Table | cut -d '/' -f2 | cut -d '/' -f2 | sort -nk5 | sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g' >> README.md
+	awk -f convert.awk bench-data.log | grep Big-Table | cut -d '/' -f2 | sort -nk5 | awk '{printf "%-20s%s %s %s \n", $1, $2, $3, $4 }'| sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g' >> README.md
 	echo '' >> README.md
 	echo 'Teams' >> README.md
-	awk -f convert.awk bench-data.log | grep Teams | cut -d '/' -f2 | sort -nk5 | sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g' >> README.md
+	awk -f convert.awk bench-data.log | grep Teams | cut -d '/' -f2 | sort -nk5 | awk '{printf "%-20s%s %s %s \n", $1, $2, $3, $4 }'| sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g' >> README.md
 	echo '```' >> README.md
 
 	cat >> README.md << EOL
