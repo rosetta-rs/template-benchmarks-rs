@@ -27,11 +27,11 @@ update: log svg readme
 
 # Sort Big Table Performance
 bigtable:
-	awk -f convert.awk bench-data.log | grep Big-Table | cut -d '/' -f2 | sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g' | sort -nk5
+	awk -f convert.awk bench-data.log | grep Big-Table | cut -d '/' -f2 | sort -nk 5 | sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g'
 
 # Sort Team Performance
 teams:
-	awk -f convert.awk bench-data.log | grep Teams | cut -d '/' -f2 | sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g' | sort -nk5
+	awk -f convert.awk bench-data.log | grep Teams | cut -d '/' -f2 | sort -nk 5 | sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g'
 
 # Updates Readme
 readme:
