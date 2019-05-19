@@ -55,7 +55,7 @@ Handlebars          [17.157 us 17.226 us 17.293 us]
 
 ## For extracting benchmarks to file
 	just log filename
-## To sort benchmarks (Note does not take units into consideration)
+## To sort benchmarks
 	just bigtable
 	just teams
 [Just](https://github.com/casey/just) must be installed to use the just commands.
