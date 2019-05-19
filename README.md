@@ -31,22 +31,22 @@ Numbers, as output by Criterion:
 
 ```java
 Big Table
-Markup                  [171.38 us 171.96 us 172.59 us] 
-fomat                   [182.86 us 184.60 us 186.54 us] 
-fmt                     [194.89 us 196.93 us 198.59 us] 
-Maud                    [219.22 us 220.11 us 221.03 us] 
-Horrorshow              [258.99 us 261.17 us 263.55 us] 
-write                   [296.53 us 297.37 us 298.21 us] 
-Handlebars              [25.655 ms 25.836 ms 26.057 ms] 
+fomat                   [267.35 us 271.94 us 277.80 us] 
+Markup                  [270.00 us 274.95 us 280.27 us] 
+Maud                    [351.39 us 357.38 us 363.98 us] 
+fmt                     [347.57 us 359.02 us 369.92 us] 
+Horrorshow              [419.62 us 425.63 us 432.36 us] 
+write                   [512.35 us 527.34 us 544.18 us] 
+Handlebars              [43.764 ms 44.711 ms 45.880 ms] 
 
 Teams
-fmt                     [237.04 ns 238.65 ns 240.04 ns] 
-fomat                   [276.91 ns 277.99 ns 279.10 ns] 
-Maud                    [296.81 ns 298.56 ns 300.35 ns] 
-Markup                  [287.13 ns 305.13 ns 321.33 ns] 
-Horrorshow              [405.60 ns 409.08 ns 412.48 ns] 
-write                   [426.38 ns 429.04 ns 432.11 ns] 
-Handlebars              [17.157 us 17.226 us 17.293 us] 
+fmt                     [350.90 ns 366.99 ns 382.82 ns] 
+Markup                  [364.64 ns 373.49 ns 383.79 ns] 
+fomat                   [473.34 ns 487.45 ns 502.92 ns] 
+Maud                    [499.61 ns 524.04 ns 555.37 ns] 
+Horrorshow              [586.57 ns 608.01 ns 630.08 ns] 
+write                   [676.92 ns 692.25 ns 708.77 ns] 
+Handlebars              [24.466 us 24.990 us 25.565 us] 
 ```
 
 ## Running the benchmarks
