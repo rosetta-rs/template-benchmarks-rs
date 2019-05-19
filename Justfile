@@ -33,6 +33,10 @@ bigtable:
 teams:
 	awk -f convert.awk bench-data.log | grep Teams | cut -d '/' -f2 | sort -nk 5 | sed 's/us/\ us/g' | sed 's/ms/\ ms/g' | sed 's/ns/\ ns/g'
 
+# Update Dependencies
+depend:
+	cargo upgrade
+
 # Updates Readme
 readme:
 	#!/usr/bin/env sh
