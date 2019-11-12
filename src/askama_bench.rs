@@ -1,8 +1,7 @@
 use askama::Template;
-
 use criterion;
 
-pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
     for _ in 0..*size {
         let mut inner = Vec::with_capacity(*size);
@@ -21,7 +20,7 @@ struct BigTable {
     table: Vec<Vec<usize>>,
 }
 
-pub fn teams(b: &mut criterion::Bencher, _: &usize) {
+pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     let teams = Teams {
         year: 2015,
         teams: vec![

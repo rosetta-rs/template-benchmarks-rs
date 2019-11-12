@@ -1,6 +1,7 @@
 use criterion;
+use fomat_macros::fomat;
 
-pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
     for _ in 0..*size {
         let mut inner = Vec::with_capacity(*size);
@@ -9,20 +10,20 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
         }
         table.push(inner);
     }
-    b.iter(||
+    b.iter(|| {
         fomat!(
-            "<table>\n"
-            for r1 in &table {
-                "<tr>\n" 
-                for r2 in r1 { "<td>"(r2)"</td>" }
-                "\n</tr>\n"
-            }
-            "</table>"
-            )
-    );
+        "<table>\n"
+        for r1 in &table {
+            "<tr>\n"
+            for r2 in r1 { "<td>"(r2)"</td>" }
+            "\n</tr>\n"
+        }
+        "</table>"
+        )
+    });
 }
 
-pub fn teams(b: &mut criterion::Bencher, _: &usize) {
+pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     let teams = Teams {
         year: 2015,
         teams: vec![
@@ -44,7 +45,8 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
             },
         ],
     };
-    b.iter(|| fomat!(
+    b.iter(|| {
+        fomat!(
 "<html>
   <head>
     <title>"(teams.year)"</title>
@@ -59,7 +61,8 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
     }
 "\n   </ul>
   </body>
-</html>"));
+</html>")
+    });
 }
 
 struct Teams {

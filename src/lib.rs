@@ -1,15 +1,3 @@
-extern crate askama;
-#[macro_use]
-extern crate horrorshow;
-extern crate criterion;
-#[macro_use]
-extern crate serde_derive;
-#[macro_use]
-extern crate fomat_macros;
-#[macro_use]
-extern crate markup;
-extern crate yarte;
-
 pub mod askama_bench;
 pub mod fomat;
 pub mod handlebars;

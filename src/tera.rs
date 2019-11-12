@@ -1,11 +1,8 @@
-extern crate serde;
-extern crate tera;
-
+use ::tera::{Context, Tera};
 use criterion;
+use serde::Serialize;
 
-use self::tera::{Context, Tera};
-
-pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
     for _ in 0..*size {
         let mut inner = Vec::with_capacity(*size);
@@ -38,7 +35,7 @@ static BIG_TABLE_TEMPLATE: &'static str = "<table>
 {% endfor %}
 </table>";
 
-pub fn teams(b: &mut criterion::Bencher, _: &usize) {
+pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     let mut tera = Tera::default();
     tera.add_raw_templates(vec![("teams.html", TEAMS_TEMPLATE)])
         .unwrap();

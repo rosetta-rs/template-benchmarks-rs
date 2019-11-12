@@ -3,6 +3,7 @@ name = "template-benchmarks-rs"
 version = "0.1.0"
 authors = ["Dirkjan Ochtman <dirkjan@ochtman.nl>"]
 build = "src/build.rs"
+edition = "2018"
 
 [dependencies]
 askama = { git = "https://github.com/djc/askama" }

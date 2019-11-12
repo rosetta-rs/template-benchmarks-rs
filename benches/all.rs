@@ -1,8 +1,4 @@
-#[macro_use]
-extern crate criterion;
-extern crate template_benchmarks_rs;
-
-use criterion::{Criterion, Fun};
+use criterion::{criterion_group, criterion_main, Criterion, Fun};
 use template_benchmarks_rs::{
     askama_bench, fomat, handlebars, horrorshow_bench, liquid, markup_bench, ructe, std_write,
     tera, yarte_bench,

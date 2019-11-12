@@ -1,6 +1,6 @@
 use yarte::Template;
 
-pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
     for _ in 0..*size {
         let mut inner = Vec::with_capacity(*size);
@@ -19,7 +19,7 @@ struct BigTable {
     table: Vec<Vec<usize>>,
 }
 
-pub fn teams(b: &mut criterion::Bencher) {
+pub fn teams(b: &mut criterion::Bencher<'_>) {
     let teams = Teams {
         year: 2015,
         teams: vec![

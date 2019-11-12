@@ -1,11 +1,11 @@
-extern crate liquid;
-extern crate serde_yaml;
-
+use ::liquid::{
+    value::{Object, Value},
+    ParserBuilder,
+};
 use criterion;
+use serde_yaml;
 
-use self::liquid::{value::{Object, Value}, ParserBuilder};
-
-pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
     for _ in 0..*size {
         let mut inner = Vec::with_capacity(*size);
@@ -33,8 +33,11 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
     b.iter(|| template.render(&globals));
 }
 
-pub fn teams(b: &mut criterion::Bencher, _: &usize) {
-    let parser = ParserBuilder::with_liquid().extra_filters().build().unwrap();
+pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
+    let parser = ParserBuilder::with_liquid()
+        .extra_filters()
+        .build()
+        .unwrap();
     let template = parser.parse(TEAMS_TEMPLATE).unwrap();
 
     let data: Object = self::serde_yaml::from_str(TEAMS_DATA).unwrap();

@@ -1,7 +1,7 @@
-use criterion;
 use crate::templates;
+use criterion;
 
-pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
+pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
     for _ in 0..*size {
         let mut inner = Vec::with_capacity(*size);
@@ -16,7 +16,7 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
     });
 }
 
-pub fn teams(b: &mut criterion::Bencher, _: &usize) {
+pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     let year = 2015;
     let teams = vec![
         Team {
