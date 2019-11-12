@@ -1,5 +1,5 @@
 use criterion;
-use templates;
+use crate::templates;
 
 pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
     let mut table = Vec::with_capacity(*size);
