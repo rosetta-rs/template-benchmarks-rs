@@ -10,7 +10,7 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(inner);
     }
     let ctx = BigTable { table };
-    b.iter(|| ctx.to_string());
+    b.iter(|| ctx.call().unwrap());
 }
 
 #[derive(Template)]
@@ -42,7 +42,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>) {
             },
         ],
     };
-    b.iter(|| teams.to_string());
+    b.iter(|| teams.call().unwrap());
 }
 
 #[derive(Template)]
