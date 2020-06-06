@@ -5,6 +5,7 @@ pub mod horrorshow_bench;
 pub mod liquid;
 pub mod markup_bench;
 pub mod ructe;
+pub mod sailfish;
 pub mod std_write;
 pub mod tera;
 pub mod yarte_bench;
