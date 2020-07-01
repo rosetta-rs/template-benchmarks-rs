@@ -16,7 +16,7 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     });
 }
 
-pub fn teams(b: &mut criterion::Bencher<'_>) {
+pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     let teams = Teams {
         year: 2015,
         teams: vec![
