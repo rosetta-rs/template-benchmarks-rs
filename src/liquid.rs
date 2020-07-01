@@ -1,7 +1,4 @@
-use ::liquid::{
-    value::{Object, Value},
-    ParserBuilder,
-};
+use ::liquid::{model::Value, Object, ParserBuilder};
 use criterion;
 use serde_yaml;
 
@@ -15,7 +12,7 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(Value::Array(inner));
     }
 
-    let template = ParserBuilder::with_liquid()
+    let template = ParserBuilder::with_stdlib()
         .build()
         .unwrap()
         .parse(
@@ -34,10 +31,7 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
 }
 
 pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
-    let parser = ParserBuilder::with_liquid()
-        .extra_filters()
-        .build()
-        .unwrap();
+    let parser = ParserBuilder::with_stdlib().build().unwrap();
     let template = parser.parse(TEAMS_TEMPLATE).unwrap();
 
     let data: Object = self::serde_yaml::from_str(TEAMS_DATA).unwrap();
