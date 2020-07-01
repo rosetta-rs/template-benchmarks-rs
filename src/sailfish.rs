@@ -22,7 +22,6 @@ pub fn teams(b: &mut criterion::Bencher<'_>) {
         teams: vec![
             Team {
                 name: "Jiangsu".into(),
-
                 score: 43,
             },
             Team {
@@ -42,7 +41,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>) {
     b.iter(|| {
         let teams = TeamsTemplate {
             year: teams.year,
-            teams: &teams.teams
+            teams: &teams.teams,
         };
         teams.render_once().unwrap()
     });
