@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-use ::handlebars::{to_json, Handlebars};
+use ::handlebars::{to_json, Context, Handlebars};
 use criterion;
 use serde::Serialize;
 use serde_json;
@@ -16,12 +16,19 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(inner);
     }
 
-    let ctx = BigTable { table };
+    let data = BigTable { table };
     let mut handlebars = Handlebars::new();
     handlebars
         .register_template_string("big-table.html", SOURCE)
         .unwrap();
-    b.iter(|| handlebars.render("big-table.html", &ctx).ok().unwrap());
+    let ctx = Context::wraps(&data).unwrap();
+
+    b.iter(|| {
+        handlebars
+            .render_with_context("big-table.html", &ctx)
+            .ok()
+            .unwrap()
+    });
 }
 
 #[derive(Serialize)]
@@ -43,7 +50,9 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
         .expect("Invalid template format");
 
     let data = teams_data();
-    b.iter(|| handlebars.render("table", &data).ok().unwrap())
+    let ctx = Context::wraps(&data).unwrap();
+
+    b.iter(|| handlebars.render_with_context("table", &ctx).ok().unwrap())
 }
 
 fn teams_data() -> BTreeMap<String, Json> {
