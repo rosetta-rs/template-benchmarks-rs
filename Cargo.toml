@@ -6,7 +6,7 @@ build = "src/build.rs"
 edition = "2018"
 
 [dependencies]
-askama = { git = "https://github.com/djc/askama" }
+askama = { git = "https://github.com/djc/askama", branch = "main" }
 criterion = "0.3"
 handlebars = { git = "https://github.com/sunng87/handlebars-rust" }
 horrorshow = { git = "https://github.com/Stebalien/horrorshow-rs" }
