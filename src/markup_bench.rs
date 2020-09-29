@@ -1,10 +1,8 @@
 // https://github.com/utkarshkukreti/markup.rs/blob/master/markup/benches/tbr.rs
 
 use criterion;
-use markup::define;
 
-// TODO: Switch to `markup::define!` when upgrading to Rust 2018.
-define! {
+markup::define! {
     BigTable(table: Vec<Vec<usize>>) {
         table {
             @for r1 in table {
@@ -36,7 +34,7 @@ pub struct Team {
     score: u8,
 }
 
-define! {
+markup::define! {
     Teams(year: u16, teams: Vec<Team>) {
         html {
             head {
