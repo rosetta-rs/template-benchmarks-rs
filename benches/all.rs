@@ -1,7 +1,7 @@
 use criterion::{criterion_group, criterion_main, Criterion, Fun};
 use template_benchmarks_rs::{
     askama_bench, fomat, handlebars, horrorshow_bench, liquid, markup_bench, ructe, sailfish,
-    std_write, tera, yarte_bench,
+    std_write, tera,
 };
 
 fn big_table(c: &mut Criterion) {
@@ -17,7 +17,6 @@ fn big_table(c: &mut Criterion) {
             Fun::new("Ructe", |b, i| ructe::big_table(b, i)),
             Fun::new("Sailfish", |b, i| sailfish::big_table(b, i)),
             Fun::new("Tera", |b, i| tera::big_table(b, i)),
-            Fun::new("Yarte", |b, i| yarte_bench::big_table(b, i)),
             Fun::new("write", |b, i| std_write::big_table(b, i)),
         ],
         100,
@@ -37,7 +36,6 @@ fn teams(c: &mut Criterion) {
             Fun::new("Ructe", |b, i| ructe::teams(b, i)),
             Fun::new("Sailfish", |b, i| sailfish::teams(b, i)),
             Fun::new("Tera", |b, i| tera::teams(b, i)),
-            Fun::new("Yarte", |b, _| yarte_bench::teams(b)),
             Fun::new("write", |b, i| std_write::teams(b, i)),
         ],
         0,
