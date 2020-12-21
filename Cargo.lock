@@ -2062,7 +2062,7 @@ dependencies = [
 [[package]]
 name = "yarte"
 version = "0.13.0"
-source = "git+https://github.com/botika/yarte#0d10cc50fdfb3c12ab277193ef9f79f806fb2199"
+source = "git+https://github.com/botika/yarte#0ff498aa12748e88ab580cbec3c55819bca5b197"
 dependencies = [
  "yarte_derive",
  "yarte_helpers",
@@ -2071,7 +2071,7 @@ dependencies = [
 [[package]]
 name = "yarte_codegen"
 version = "0.13.0"
-source = "git+https://github.com/botika/yarte#0d10cc50fdfb3c12ab277193ef9f79f806fb2199"
+source = "git+https://github.com/botika/yarte#0ff498aa12748e88ab580cbec3c55819bca5b197"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2083,7 +2083,7 @@ dependencies = [
 [[package]]
 name = "yarte_derive"
 version = "0.13.0"
-source = "git+https://github.com/botika/yarte#0d10cc50fdfb3c12ab277193ef9f79f806fb2199"
+source = "git+https://github.com/botika/yarte#0ff498aa12748e88ab580cbec3c55819bca5b197"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2097,7 +2097,7 @@ dependencies = [
 [[package]]
 name = "yarte_helpers"
 version = "0.13.0"
-source = "git+https://github.com/botika/yarte#0d10cc50fdfb3c12ab277193ef9f79f806fb2199"
+source = "git+https://github.com/botika/yarte#0ff498aa12748e88ab580cbec3c55819bca5b197"
 dependencies = [
  "bat",
  "dtoa",
@@ -2112,7 +2112,7 @@ dependencies = [
 [[package]]
 name = "yarte_hir"
 version = "0.13.0"
-source = "git+https://github.com/botika/yarte#0d10cc50fdfb3c12ab277193ef9f79f806fb2199"
+source = "git+https://github.com/botika/yarte#0ff498aa12748e88ab580cbec3c55819bca5b197"
 dependencies = [
  "derive_more",
  "proc-macro2",
@@ -2127,7 +2127,7 @@ dependencies = [
 [[package]]
 name = "yarte_parser"
 version = "0.13.0"
-source = "git+https://github.com/botika/yarte#0d10cc50fdfb3c12ab277193ef9f79f806fb2199"
+source = "git+https://github.com/botika/yarte#0ff498aa12748e88ab580cbec3c55819bca5b197"
 dependencies = [
  "annotate-snippets",
  "derive_more",
