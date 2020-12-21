@@ -8,5 +8,6 @@ pub mod ructe;
 pub mod sailfish;
 pub mod std_write;
 pub mod tera;
+pub mod maud_bench;
 
 include!(concat!(env!("OUT_DIR"), "/templates.rs"));
