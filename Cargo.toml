@@ -12,7 +12,6 @@ handlebars = { git = "https://github.com/sunng87/handlebars-rust" }
 horrorshow = { git = "https://github.com/Stebalien/horrorshow-rs" }
 liquid = { git = "https://github.com/cobalt-org/liquid-rust" }
 markup = { git = "https://github.com/utkarshkukreti/markup.rs" }
-yarte = { git = "https://github.com/botika/yarte" }
 sailfish = { git = "https://github.com/Kogia-sima/sailfish" }
 sailfish-macros = { git = "https://github.com/Kogia-sima/sailfish" }
 serde = "1"
