@@ -653,7 +653,7 @@ dependencies = [
 [[package]]
 name = "maud"
 version = "0.22.1"
-source = "git+https://github.com/lambda-fairy/maud#167afc65bda0630acba20be5bef7188325e31b9d"
+source = "git+https://github.com/lambda-fairy/maud#07f31e93422ebe1f6af7fdd66a4ed6ca8536a0f7"
 dependencies = [
  "maud_htmlescape",
  "maud_macros",
@@ -662,12 +662,12 @@ dependencies = [
 [[package]]
 name = "maud_htmlescape"
 version = "0.17.0"
-source = "git+https://github.com/lambda-fairy/maud#167afc65bda0630acba20be5bef7188325e31b9d"
+source = "git+https://github.com/lambda-fairy/maud#07f31e93422ebe1f6af7fdd66a4ed6ca8536a0f7"
 
 [[package]]
 name = "maud_macros"
 version = "0.22.1"
-source = "git+https://github.com/lambda-fairy/maud#167afc65bda0630acba20be5bef7188325e31b9d"
+source = "git+https://github.com/lambda-fairy/maud#07f31e93422ebe1f6af7fdd66a4ed6ca8536a0f7"
 dependencies = [
  "maud_htmlescape",
  "proc-macro-error",
