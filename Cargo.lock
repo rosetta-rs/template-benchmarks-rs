@@ -1022,7 +1022,7 @@ checksum = "3b181ba2dcf07aaccad5448e8ead58db5b742cf85dfe035e2227f137a539a189"
 [[package]]
 name = "ructe"
 version = "0.13.1-PRE"
-source = "git+https://github.com/kaj/ructe#0b8acfe5eea15713bc56c156f974fa05967d0353"
+source = "git+https://github.com/kaj/ructe#fd0203f1d72ba178702e810f497ab91e7ab3daa8"
 dependencies = [
  "base64",
  "bytecount",
