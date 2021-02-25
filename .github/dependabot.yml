@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "criterion"
+      - dependency-name: "serde"
+      - dependency-name: "serde_derive"
+      - dependency-name: "serde_json"
+      - dependency-name: "serde_yaml"
