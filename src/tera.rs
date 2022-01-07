@@ -63,7 +63,6 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
         ],
     );
 
-    let _ = tera.render("teams.html", &ctx).unwrap();
     b.iter(|| tera.render("teams.html", &ctx));
 }
 
