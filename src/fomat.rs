@@ -1,4 +1,4 @@
-use criterion;
+use criterion::{self, black_box};
 use fomat_macros::fomat;
 
 pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
@@ -11,9 +11,10 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(inner);
     }
     b.iter(|| {
+        let table = black_box(&table);
         fomat!(
         "<table>\n"
-        for r1 in &table {
+        for r1 in table {
             "<tr>\n"
             for r2 in r1 { "<td>"(r2)"</td>" }
             "\n</tr>\n"
@@ -46,6 +47,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
         ],
     };
     b.iter(|| {
+        let teams = black_box(&teams);
         fomat!(
 "<html>
   <head>
@@ -54,7 +56,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
   <body>
     <h1>CSL "(teams.year)"</h1>
     <ul>"
-    for (i,team) in (&teams).teams.iter().enumerate() {
+    for (i,team) in teams.teams.iter().enumerate() {
         "    <li class=\"" if i == 0 { "champion" } "\">\n"
         "      <b>"(team.name)"</b>: "(team.score)"\n"
         "    </li>\n"

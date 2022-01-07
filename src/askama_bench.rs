@@ -1,5 +1,5 @@
 use askama::Template;
-use criterion;
+use criterion::{self, black_box};
 
 pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
@@ -11,7 +11,10 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(inner);
     }
     let ctx = BigTable { table };
-    b.iter(|| ctx.render().unwrap());
+    b.iter(|| {
+        let ctx = black_box(&ctx);
+        ctx.render().unwrap()
+    });
 }
 
 #[derive(Template)]
@@ -42,7 +45,10 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
             },
         ],
     };
-    b.iter(|| teams.render().unwrap());
+    b.iter(|| {
+        let teams = black_box(&teams);
+        teams.render().unwrap()
+    });
 }
 
 #[derive(Template)]

@@ -1,3 +1,4 @@
+use criterion::black_box;
 use sailfish::TemplateOnce;
 
 pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
@@ -10,7 +11,8 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(inner);
     }
     b.iter(|| {
-        let ctx = BigTable { table: &table };
+        let table = black_box(&table);
+        let ctx = BigTable { table };
         ctx.render_once().unwrap()
     });
 }
@@ -38,10 +40,8 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
         ],
     };
     b.iter(|| {
-        let teams = TeamsTemplate {
-            year: teams.year,
-            teams: &teams.teams,
-        };
+        let (year, teams) = black_box((teams.year, &teams.teams));
+        let teams = TeamsTemplate { year, teams };
         teams.render_once().unwrap()
     });
 }

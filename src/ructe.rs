@@ -1,5 +1,5 @@
 use crate::templates;
-use criterion;
+use criterion::{self, black_box};
 
 pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
@@ -11,8 +11,9 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(inner);
     }
     b.iter(|| {
+        let table = black_box(&table);
         let mut buf = Vec::new();
-        templates::big_table(&mut buf, &table).unwrap();
+        templates::big_table(&mut buf, table).unwrap();
         buf
     });
 }
@@ -38,8 +39,9 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
         },
     ];
     b.iter(|| {
+        let teams = black_box(&teams);
         let mut buf = Vec::new();
-        templates::teams(&mut buf, year, &teams).unwrap();
+        templates::teams(&mut buf, year, teams).unwrap();
         buf
     });
 }

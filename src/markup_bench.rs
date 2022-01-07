@@ -1,6 +1,6 @@
 // https://github.com/utkarshkukreti/markup.rs/blob/master/markup/benches/tbr.rs
 
-use criterion;
+use criterion::{self, black_box};
 
 markup::define! {
     BigTable(table: Vec<Vec<usize>>) {
@@ -26,7 +26,10 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(inner);
     }
     let table = BigTable { table };
-    b.iter(|| table.to_string());
+    b.iter(|| {
+        let table = black_box(&table);
+        table.to_string()
+    });
 }
 
 pub struct Team {
@@ -76,5 +79,8 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
             },
         ],
     };
-    b.iter(|| teams.to_string());
+    b.iter(|| {
+        let teams = black_box(&teams);
+        teams.to_string()
+    });
 }

@@ -1,5 +1,5 @@
 use ::tera::{Context, Tera};
-use criterion;
+use criterion::{self, black_box};
 use serde::Serialize;
 
 pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
@@ -19,7 +19,10 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     ctx.insert("table", &table);
 
     let _ = tera.render("big-table.html", &ctx).unwrap();
-    b.iter(|| tera.render("big-table.html", &ctx));
+    b.iter(|| {
+        let ctx = black_box(&ctx);
+        tera.render("big-table.html", ctx)
+    });
 }
 
 #[derive(Serialize)]
@@ -63,7 +66,10 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
         ],
     );
 
-    b.iter(|| tera.render("teams.html", &ctx));
+    b.iter(|| {
+        let ctx = black_box(&ctx);
+        tera.render("teams.html", ctx)
+    });
 }
 
 static TEAMS_TEMPLATE: &'static str = "<html>
