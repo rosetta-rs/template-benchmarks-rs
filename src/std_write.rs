@@ -21,7 +21,7 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
             }
             write!(&mut output, "</tr>\n").unwrap();
         }
-        write!(&mut output, "</table>").unwrap();
+        write!(&mut output, "</table>").unwrap()
     });
 }
 
@@ -79,7 +79,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
             </body>
             </html>"
         )
-        .unwrap();
+        .unwrap()
     });
 }
 

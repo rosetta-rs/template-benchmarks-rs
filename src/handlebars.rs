@@ -26,7 +26,6 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     b.iter(|| {
         handlebars
             .render_with_context("big-table.html", &ctx)
-            .ok()
             .unwrap()
     });
 }
@@ -52,7 +51,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     let data = teams_data();
     let ctx = Context::wraps(&data).unwrap();
 
-    b.iter(|| handlebars.render_with_context("table", &ctx).ok().unwrap())
+    b.iter(|| handlebars.render_with_context("table", &ctx).unwrap())
 }
 
 fn teams_data() -> BTreeMap<String, Json> {
