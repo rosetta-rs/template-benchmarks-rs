@@ -1,4 +1,3 @@
-
 use criterion;
 
 use maud::html;
