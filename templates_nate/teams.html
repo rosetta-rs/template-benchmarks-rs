@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>{{ self.year }}</title>
+  </head>
+  <body>
+    <h1>CSL {{ self.year }}</h1>
+    <ul>
+    {% for (index, team) in self.teams.iter().enumerate() { %}
+      <li class="{% if index == 0 { %}champion{% } %}">
+      <b>{{ team.name }}</b>: {{ team.score }}
+      </li>
+    {% } %}
+    </ul>
+  </body>
+</html>

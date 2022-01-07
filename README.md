@@ -11,9 +11,10 @@ download ratings from [crates.io][crates], these nine projects are assessed:
 - [horrorshow][horrorshow]: a templating library written in rust macros
 - [ructe][ructe]: Rust Compiled Templates, efficient type-safe web page templates
 - [fomat][fomat]: alternative syntax for print/write/format-like macros with a small templating language
-- [markup][markup]: A blazing fast, type-safe template engine for Rust.
-- [maud][maud]: A Compile-time HTML template engine for Rust.
-- [sailfish][sailfish]: Simple, small, and extremely fast template engine for Rust 
+- [markup][markup]: A blazing fast, type-safe template engine for Rust
+- [maud][maud]: A Compile-time HTML template engine for Rust
+- [sailfish][sailfish]: Simple, small, and extremely fast template engine for Rust
+- [nate][nate]:  Not a Template Engine for Rust
 
 [crates]: https://crates.io/categories/template-engine
 [write]: https://doc.rust-lang.org/std/macro.write.html
@@ -27,6 +28,7 @@ download ratings from [crates.io][crates], these nine projects are assessed:
 [markup]: https://github.com/utkarshkukreti/markup.rs
 [sailfish]: https://github.com/Kogia-sima/sailfish
 [maud]: https://github.com/lambda-fairy/maud
+[nate]: https://github.com/Kijewski/nate
 
 ## Results
 
