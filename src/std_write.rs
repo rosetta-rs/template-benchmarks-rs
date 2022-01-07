@@ -1,6 +1,6 @@
 use std::io::Write;
 
-use criterion;
+use criterion::{self, black_box};
 
 pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
@@ -12,16 +12,17 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         table.push(inner);
     }
     b.iter(|| {
+        let table = black_box(&table);
         let mut output = Vec::new();
         write!(&mut output, "<table>").unwrap();
-        for r1 in &table {
+        for r1 in table {
             write!(&mut output, "<tr>\n").unwrap();
             for r2 in r1 {
                 write!(&mut output, "<td>{col}</td>", col = r2).unwrap();
             }
             write!(&mut output, "</tr>\n").unwrap();
         }
-        write!(&mut output, "</table>").unwrap();
+        write!(&mut output, "</table>").unwrap()
     });
 }
 
@@ -48,6 +49,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
         ],
     };
     b.iter(|| {
+        let teams = black_box(&teams);
         let mut output = Vec::new();
         write!(
             &mut output,
@@ -61,7 +63,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
             year = teams.year
         )
         .unwrap();
-        for (i, team) in (&teams).teams.iter().enumerate() {
+        for (i, team) in teams.teams.iter().enumerate() {
             let champion = if i != 0 { "" } else { "champion" };
             write!(
                 &mut output,
@@ -79,7 +81,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
             </body>
             </html>"
         )
-        .unwrap();
+        .unwrap()
     });
 }
 

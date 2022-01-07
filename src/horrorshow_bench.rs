@@ -1,4 +1,5 @@
 use criterion;
+use criterion::black_box;
 use horrorshow::html;
 use horrorshow::prelude::*;
 use horrorshow::Error;
@@ -12,7 +13,10 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         }
         table.push(inner);
     }
-    b.iter(|| big_table_render(&table).unwrap());
+    b.iter(|| {
+        let table = black_box(&table);
+        big_table_render(table).unwrap()
+    });
 }
 
 fn big_table_render(table: &Vec<Vec<usize>>) -> Result<String, Error> {
@@ -53,7 +57,10 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
         ],
     };
 
-    b.iter(|| teams_render(&teams).unwrap());
+    b.iter(|| {
+        let teams = black_box(&teams);
+        teams_render(teams).unwrap()
+    });
 }
 
 fn teams_render(teams: &Teams) -> Result<String, Error> {

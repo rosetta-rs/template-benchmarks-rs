@@ -1,5 +1,4 @@
-
-use criterion;
+use criterion::{self, black_box};
 
 use maud::html;
 
@@ -12,7 +11,10 @@ pub fn big_table(b: &mut criterion::Bencher, size: &usize) {
         }
         table.push(inner);
     }
-    b.iter(|| big_table_render(&table));
+    b.iter(|| {
+        let table = black_box(&table);
+        big_table_render(table)
+    });
 }
 
 fn big_table_render(table: &Vec<Vec<usize>>) -> String {
@@ -53,7 +55,10 @@ pub fn teams(b: &mut criterion::Bencher, _: &usize) {
         ],
     };
 
-    b.iter(|| teams_render(&teams));
+    b.iter(|| {
+        let teams = black_box(&teams);
+        teams_render(teams)
+    });
 }
 
 fn teams_render(teams: &Teams) -> String {

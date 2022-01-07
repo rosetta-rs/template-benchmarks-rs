@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 
 use ::handlebars::{to_json, Context, Handlebars};
-use criterion;
+use criterion::{self, black_box};
 use serde::Serialize;
 use serde_json;
 use serde_json::value::Value as Json;
@@ -24,9 +24,9 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let ctx = Context::wraps(&data).unwrap();
 
     b.iter(|| {
+        let ctx = black_box(&ctx);
         handlebars
-            .render_with_context("big-table.html", &ctx)
-            .ok()
+            .render_with_context("big-table.html", ctx)
             .unwrap()
     });
 }
@@ -52,7 +52,10 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     let data = teams_data();
     let ctx = Context::wraps(&data).unwrap();
 
-    b.iter(|| handlebars.render_with_context("table", &ctx).ok().unwrap())
+    b.iter(|| {
+        let ctx = black_box(&ctx);
+        handlebars.render_with_context("table", ctx).unwrap()
+    });
 }
 
 fn teams_data() -> BTreeMap<String, Json> {

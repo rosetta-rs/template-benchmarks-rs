@@ -1,7 +1,7 @@
 use criterion::{criterion_group, criterion_main, Criterion, Fun};
 use template_benchmarks_rs::{
-    askama_bench, fomat, handlebars, horrorshow_bench, liquid, markup_bench, maud_bench, ructe, sailfish,
-    std_write, tera,
+    askama_bench, fomat, handlebars, horrorshow_bench, liquid, markup_bench, maud_bench,
+    nate_bench, ructe, sailfish, std_write, tera,
 };
 
 fn big_table(c: &mut Criterion) {
@@ -15,6 +15,7 @@ fn big_table(c: &mut Criterion) {
             Fun::new("Liquid", |b, i| liquid::big_table(b, i)),
             Fun::new("Markup", |b, i| markup_bench::big_table(b, i)),
             Fun::new("Maud", |b, i| maud_bench::big_table(b, i)),
+            Fun::new("Nate", |b, i| nate_bench::big_table(b, i)),
             Fun::new("Ructe", |b, i| ructe::big_table(b, i)),
             Fun::new("Sailfish", |b, i| sailfish::big_table(b, i)),
             Fun::new("Tera", |b, i| tera::big_table(b, i)),
@@ -35,6 +36,7 @@ fn teams(c: &mut Criterion) {
             Fun::new("Liquid", |b, i| liquid::teams(b, i)),
             Fun::new("Markup", |b, i| markup_bench::teams(b, i)),
             Fun::new("Maud", |b, i| maud_bench::teams(b, i)),
+            Fun::new("Nate", |b, i| nate_bench::teams(b, i)),
             Fun::new("Ructe", |b, i| ructe::teams(b, i)),
             Fun::new("Sailfish", |b, i| sailfish::teams(b, i)),
             Fun::new("Tera", |b, i| tera::teams(b, i)),

@@ -1,5 +1,5 @@
 use criterion::{self, black_box};
-use fomat_macros::fomat;
+use nate::Nate;
 
 pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut table = Vec::with_capacity(*size);
@@ -10,18 +10,17 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
         }
         table.push(inner);
     }
+    let ctx = BigTable { table };
     b.iter(|| {
-        let table = black_box(&table);
-        fomat!(
-        "<table>\n"
-        for r1 in table {
-            "<tr>\n"
-            for r2 in r1 { "<td>"(r2)"</td>" }
-            "\n</tr>\n"
-        }
-        "</table>"
-        )
+        let ctx = black_box(&ctx);
+        format!("{}", ctx)
     });
+}
+
+#[derive(Nate)]
+#[template(path = "templates_nate/big-table.html")]
+struct BigTable {
+    table: Vec<Vec<usize>>,
 }
 
 pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
@@ -48,25 +47,12 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     };
     b.iter(|| {
         let teams = black_box(&teams);
-        fomat!(
-"<html>
-  <head>
-    <title>"(teams.year)"</title>
-  </head>
-  <body>
-    <h1>CSL "(teams.year)"</h1>
-    <ul>"
-    for (i,team) in teams.teams.iter().enumerate() {
-        "    <li class=\"" if i == 0 { "champion" } "\">\n"
-        "      <b>"(team.name)"</b>: "(team.score)"\n"
-        "    </li>\n"
-    }
-"\n   </ul>
-  </body>
-</html>")
+        format!("{}", teams)
     });
 }
 
+#[derive(Nate)]
+#[template(path = "templates_nate/teams.html")]
 struct Teams {
     year: u16,
     teams: Vec<Team>,

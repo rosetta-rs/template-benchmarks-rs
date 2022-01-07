@@ -1,5 +1,5 @@
 use ::liquid::{model::Value, Object, ParserBuilder};
-use criterion;
+use criterion::{self, black_box};
 use serde_yaml;
 
 pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
@@ -27,7 +27,10 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     let mut globals = Object::new();
     globals.insert("table".into(), Value::Array(table));
 
-    b.iter(|| template.render(&globals));
+    b.iter(|| {
+        let globals = black_box(&globals);
+        template.render(globals)
+    });
 }
 
 pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
@@ -36,7 +39,10 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
 
     let data: Object = self::serde_yaml::from_str(TEAMS_DATA).unwrap();
 
-    b.iter(|| template.render(&data));
+    b.iter(|| {
+        let data = black_box(&data);
+        template.render(data)
+    });
 }
 
 static TEAMS_TEMPLATE: &'static str = "<html>
