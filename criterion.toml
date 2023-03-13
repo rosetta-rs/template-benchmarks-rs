@@ -1,0 +1,19 @@
+# This is used to override the directory where cargo-criterion saves
+# its data and generates reports.
+criterion_home = "./target/criterion"
+
+# This is used to configure the format of cargo-criterion's command-line output.
+# Options are:
+# criterion: Prints confidence intervals for measurement and throughput, and
+#   indicates whether a change was detected from the previous run. The default.
+# quiet: Like criterion, but does not indicate changes. Useful for simply
+#   presenting output numbers, eg. on a library's README.
+# verbose: Like criterion, but prints additional statistics.
+# bencher: Emulates the output format of the bencher crate and nightly-only
+#   libtest benchmarks.
+output_format = "quiet"
+
+# This is used to configure the plotting backend used by cargo-criterion.
+# Options are "gnuplot" and "plotters", or "auto", which will use gnuplot if it's
+# available or plotters if it isn't.
+ploting_backend = "auto"

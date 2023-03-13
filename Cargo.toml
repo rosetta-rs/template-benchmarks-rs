@@ -3,11 +3,11 @@ name = "template-benchmarks-rs"
 version = "0.1.0"
 authors = ["Dirkjan Ochtman <dirkjan@ochtman.nl>"]
 build = "src/build.rs"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 askama = { git = "https://github.com/djc/askama", branch = "main" }
-criterion = "0.4"
+criterion = { version = "0.4", features = ["html_reports"] }
 handlebars = { git = "https://github.com/sunng87/handlebars-rust" }
 horrorshow = { git = "https://github.com/Stebalien/horrorshow-rs" }
 liquid = { git = "https://github.com/cobalt-org/liquid-rust" }
