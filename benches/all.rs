@@ -1,44 +1,39 @@
-use criterion::{criterion_group, criterion_main, Criterion};
-use template_benchmarks_rs::{
-    askama_bench, fomat, handlebars, horrorshow_bench, liquid, markup_bench, maud_bench, ructe,
-    sailfish, std_write, tera,
-};
-
 fn big_table(c: &mut Criterion) {
     let input = 100;
+
     let mut group = c.benchmark_group("Big table");
-    group.bench_with_input("Askama", &input, |b, i| askama_bench::big_table(b, i));
-    group.bench_with_input("fomat", &input, |b, i| fomat::big_table(b, i));
-    group.bench_with_input("Handlebars", &input, |b, i| handlebars::big_table(b, i));
-    group.bench_with_input("Horrorshow", &input, |b, i| {
-        horrorshow_bench::big_table(b, i)
-    });
-    group.bench_with_input("Liquid", &input, |b, i| liquid::big_table(b, i));
-    group.bench_with_input("Markup", &input, |b, i| markup_bench::big_table(b, i));
-    group.bench_with_input("Maud", &input, |b, i| maud_bench::big_table(b, i));
-    group.bench_with_input("Ructe", &input, |b, i| ructe::big_table(b, i));
-    group.bench_with_input("Sailfish", &input, |b, i| sailfish::big_table(b, i));
-    group.bench_with_input("Tera", &input, |b, i| tera::big_table(b, i));
-    group.bench_with_input("write", &input, |b, i| std_write::big_table(b, i));
+
+    group.bench_with_input("Askama", &input, askama_bench::big_table);
+    group.bench_with_input("fomat", &input, fomat::big_table);
+    group.bench_with_input("Handlebars", &input, handlebars::big_table);
+    group.bench_with_input("Horrorshow", &input, horrorshow_bench::big_table);
+    group.bench_with_input("Liquid", &input, liquid::big_table);
+    group.bench_with_input("Markup", &input, markup_bench::big_table);
+    group.bench_with_input("Maud", &input, maud_bench::big_table);
+    group.bench_with_input("Ructe", &input, ructe::big_table);
+    group.bench_with_input("Sailfish", &input, sailfish::big_table);
+    group.bench_with_input("Tera", &input, tera::big_table);
+    group.bench_with_input("write", &input, std_write::big_table);
+
     group.finish();
 }
 
 fn teams(c: &mut Criterion) {
     let input = 0;
+
     let mut group = c.benchmark_group("Teams");
-    group.bench_with_input("Askama", &input, |b, i| askama_bench::teams(b, i));
-    group.bench_with_input("fomat", &input, |b, i| fomat::teams(b, i));
-    group.bench_with_input("Handlebars", &input, |b, i| handlebars::teams(b, i));
-    group.bench_with_input("Horrorshow", &input, |b, i| horrorshow_bench::teams(b, i));
-    group.bench_with_input("Liquid", &input, |b, i| liquid::teams(b, i));
-    group.bench_with_input("Markup", &input, |b, i| markup_bench::teams(b, i));
-    group.bench_with_input("Maud", &input, |b, i| maud_bench::teams(b, i));
-    group.bench_with_input("Ructe", &input, |b, i| ructe::teams(b, i));
-    group.bench_with_input("Sailfish", &input, |b, i| sailfish::teams(b, i));
-    group.bench_with_input("Tera", &input, |b, i| tera::teams(b, i));
-    group.bench_with_input("write", &input, |b, i| std_write::teams(b, i));
+
+    group.bench_with_input("Askama", &input, askama_bench::teams);
+    group.bench_with_input("fomat", &input, fomat::teams);
+    group.bench_with_input("Handlebars", &input, handlebars::teams);
+    group.bench_with_input("Horrorshow", &input, horrorshow_bench::teams);
+    group.bench_with_input("Liquid", &input, liquid::teams);
+    group.bench_with_input("Markup", &input, markup_bench::teams);
+    group.bench_with_input("Maud", &input, maud_bench::teams);
+    group.bench_with_input("Ructe", &input, ructe::teams);
+    group.bench_with_input("Sailfish", &input, sailfish::teams);
+    group.bench_with_input("Tera", &input, tera::teams);
+    group.bench_with_input("write", &input, std_write::teams);
+
     group.finish();
 }
-
-criterion_group!(benches, big_table, teams);
-criterion_main!(benches);
