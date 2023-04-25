@@ -12,7 +12,7 @@ pub fn big_table(b: &mut criterion::Bencher<'_>, size: &usize) {
     }
     b.iter(|| {
         let mut buf = Vec::new();
-        templates::big_table(&mut buf, &table).unwrap();
+        templates::big_table_html(&mut buf, &table).unwrap();
     });
 }
 
@@ -38,7 +38,7 @@ pub fn teams(b: &mut criterion::Bencher<'_>, _: &usize) {
     ];
     b.iter(|| {
         let mut buf = Vec::new();
-        templates::teams(&mut buf, year, &teams).unwrap();
+        templates::teams_html(&mut buf, year, &teams).unwrap();
     });
 }
 
