@@ -21,6 +21,7 @@ serde_yaml = "0.9"
 tera = { git = "https://github.com/Keats/tera" }
 fomat-macros = { git = "https://github.com/krdln/fomat-macros" }
 maud = { git = "https://github.com/lambda-fairy/maud" }
+rusty-html = { git = "https://github.com/michaelvanstraten/rusty-html" }
 
 [build-dependencies]
 ructe = { git = "https://github.com/kaj/ructe" }
