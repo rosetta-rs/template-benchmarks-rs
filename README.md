@@ -3,17 +3,18 @@
 This repo tries to assess Rust template engine performance. Following the
 download ratings from [crates.io][crates], these nine projects are assessed:
 
-- [write!][write]: the std library `write!` macro
-- [Handlebars][handlebars]: Handlebars templating implemented in Rust
-- [Tera][tera]: template engine based on Jinja2/Django templates
-- [Liquid][liquid]: the liquid templating language for Rust
-- [Askama][askama]: type-safe, compiled Jinja-like templates for Rust
-- [horrorshow][horrorshow]: a templating library written in rust macros
-- [ructe][ructe]: Rust Compiled Templates, efficient type-safe web page templates
-- [fomat][fomat]: alternative syntax for print/write/format-like macros with a small templating language
-- [markup][markup]: A blazing fast, type-safe template engine for Rust.
-- [maud][maud]: A Compile-time HTML template engine for Rust.
-- [sailfish][sailfish]: Simple, small, and extremely fast template engine for Rust 
+-   [write!][write]: the std library `write!` macro
+-   [Handlebars][handlebars]: Handlebars templating implemented in Rust
+-   [Tera][tera]: template engine based on Jinja2/Django templates
+-   [Liquid][liquid]: the liquid templating language for Rust
+-   [Askama][askama]: type-safe, compiled Jinja-like templates for Rust
+-   [horrorshow][horrorshow]: a templating library written in rust macros
+-   [ructe][ructe]: Rust Compiled Templates, efficient type-safe web page templates
+-   [fomat][fomat]: alternative syntax for print/write/format-like macros with a small templating language
+-   [markup][markup]: A blazing fast, type-safe template engine for Rust.
+-   [maud][maud]: A Compile-time HTML template engine for Rust.
+-   [sailfish][sailfish]: Simple, small, and extremely fast template engine for Rust
+-   [rusty-html][rusty-html]: Rusty HTML is a html-templating framework
 
 [crates]: https://crates.io/categories/template-engine
 [write]: https://doc.rust-lang.org/std/macro.write.html
@@ -27,6 +28,7 @@ download ratings from [crates.io][crates], these nine projects are assessed:
 [markup]: https://github.com/utkarshkukreti/markup.rs
 [sailfish]: https://github.com/Kogia-sima/sailfish
 [maud]: https://github.com/lambda-fairy/maud
+[rusty-html]: https://github.com/michaelvanstraten/rusty-html
 
 ## Results
 
